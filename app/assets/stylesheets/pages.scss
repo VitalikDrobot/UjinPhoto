@@ -31,7 +31,7 @@ a:hover                        { text-decoration:none; }
 .align-c                       { text-align:center !important; }
 .clear                         { clear:both; }
 
-
+$primary-font: 'Impact';
 @font-face {
   font-family: 'MyriadProRegular';
   src: url('MyriadProRegular.eot');
@@ -47,6 +47,15 @@ a:hover                        { text-decoration:none; }
   src: url('Bedrock-Cyr.eot?#iefix') format('embedded-opentype'),
   url('Bedrock-Cyr.woff') format('woff'),
   url('Bedrock-Cyr.ttf') format('truetype');
+  font-style: normal;
+  font-weight: normal;
+}
+@font-face {
+  font-family: 'Impact';
+  src: url('Impact.eot');
+  src: url('Impact.eot?#iefix') format('embedded-opentype'),
+  url('Impact.woff') format('woff'),
+  url('Impact.ttf') format('truetype');
   font-style: normal;
   font-weight: normal;
 }
@@ -299,7 +308,7 @@ a:hover                        { text-decoration:none; }
     height: 310px;
     .label-text {
       font: {
-        family: Bedrock-Cyr;
+        family: Impact;
         size: 56px;
       }
       color: #000;
@@ -325,7 +334,7 @@ a:hover                        { text-decoration:none; }
       position: relative;
       width: 220px;
       font: {
-        family: Bedrock-Cyr;
+        family: $primary-font;
         size: 38px;
       }
     }
@@ -388,7 +397,7 @@ a:hover                        { text-decoration:none; }
             padding: 0 14px;
             a {
               font: {
-                family: 'Bedrock-Cyr';
+                family: $primary-font;
                 size: 42px;
               }
               color: #A8A8A8;

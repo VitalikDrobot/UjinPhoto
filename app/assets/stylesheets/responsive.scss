@@ -102,9 +102,11 @@
           li {
             height: 50px;
             a {
-              font-size: 11px;
+              font: {
+                size: 11px;
+                family: 'MyriadProRegular';
+              }
               padding: 11px 6px;
-              font-family: 'MyriadProRegular';
             }
           }
         }
@@ -114,8 +116,10 @@
       }
       .price {
         h3 {
-          font-size: 23px;
-          font-weight: normal;
+          font: {
+            size: 23px;
+            weight: normal;
+          }
           margin-bottom: 30px;
           text-align: center;
         }
@@ -124,8 +128,10 @@
             margin: 0 10px 5px;
             h4 {
               font-size: 24px;
-              padding-left: 15px;
-              padding-right: 15px;
+              padding: {
+                left: 15px;
+                right: 15px;
+              }
             }
             .description {
               margin: 10px 25px 10px 40px;
@@ -154,8 +160,10 @@
       }
       .page2 {
         h2 {
-          font-size: 26px;
-          font-weight: normal;
+          font: {
+            size: 26px;
+            weight: normal;
+          }
         }
         .invitation {
           li {
@@ -229,8 +237,10 @@
             text-align: center;
             overflow: hidden;
             h2 {
-              font-size: 26px;
-              font-weight: normal;
+              font: {
+                size: 26px;
+                weight: normal;
+              }
             }
             .layflat {
               text-transform: capitalize;
@@ -266,8 +276,10 @@
         }
         &.big-message {
           a {
-            background-position: 0 0;
-            background-size: 417px auto;
+            background: {
+              size: 417px auto;
+              position: 0 0;
+            }
             height: 109px;
             width: 294px;
             p {
@@ -282,8 +294,10 @@
         }
         &.small-message {
           a {
-            background-position: -303px 0;
-            background-size: 400px auto;
+            background: {
+              size: 400px auto;
+              position: -303px 0;
+            }
             height: 110px;
             width: 105px;
             p {
@@ -338,8 +352,10 @@
       .social {
         margin-top: 25px;
         overflow: hidden;
-        margin-left:0;
-        margin-right: 10px;
+        margin: {
+          left: 0;
+          right: 10px;
+        }
         li {
           margin-right: 0;
           .photo-love-ujin {
@@ -374,7 +390,7 @@
           height: 48px;
           width:128px;
           left: 15px;
-          margin-top: 22px;
+          margin-top: 17px;
         }
       }
     }
@@ -657,8 +673,8 @@
           width: 330px;
         }
         input[type="submit"] {
-          font-size: 35px;
-          width: 220px;
+          font-size: 32px;
+          width: 220px
         }
       }
     }
@@ -692,8 +708,10 @@
       }
       .nav {
         overflow: hidden;
-        margin-right: -10px;
-        margin-bottom: 40px;
+        margin: {
+          right: -10px;
+          bottom: 40px;
+        }
         li {
           height: 467px;
           margin-right: 5px;
@@ -888,11 +906,13 @@
           height: 47px;
           width: 446px;
           font-size: 25px;
-          margin-right: -5px;
-          margin-top: 30px;
+          margin: {
+            right: -5px;
+            top: 30px;
+          }
         }
         input[type="submit"] {
-          font-size: 38px;
+          font-size: 35px;
           height: 58px;
           margin-bottom: 162px;
           width: 220px;
@@ -1117,8 +1137,10 @@
         &.small-message {
           position: relative;
           a {
-            background-size: initial;
-            background-position: -480px 0;
+            background: {
+              size: initial;
+              position: -480px 0;
+            }
             height: 159px;
             width: 156px;
           }
@@ -1163,7 +1185,7 @@
           margin-top: 60px;
         }
         input[type="submit"] {
-          font-size: 40px;
+          font-size: 35px;
           position: relative;
           top: 75px;
           height: 58px;
