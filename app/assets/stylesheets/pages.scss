@@ -31,7 +31,7 @@ a:hover                        { text-decoration:none; }
 .align-c                       { text-align:center !important; }
 .clear                         { clear:both; }
 
-$primary-font: 'Impact';
+$primary-font: 'FuturaLight';
 @font-face {
   font-family: 'MyriadProRegular';
   src: url('MyriadProRegular.eot');
@@ -42,23 +42,15 @@ $primary-font: 'Impact';
   font-weight: normal;
 }
 @font-face {
-  font-family: 'Bedrock-Cyr';
-  src: url('Bedrock-Cyr.eot');
-  src: url('Bedrock-Cyr.eot?#iefix') format('embedded-opentype'),
-  url('Bedrock-Cyr.woff') format('woff'),
-  url('Bedrock-Cyr.ttf') format('truetype');
+  font-family: 'FuturaLight';
+  src: url('FuturaLight.eot');
+  src: url('FuturaLight.eot?#iefix') format('embedded-opentype'),
+  url('FuturaLight.woff') format('woff'),
+  url('FuturaLight.ttf') format('truetype');
   font-style: normal;
   font-weight: normal;
 }
-@font-face {
-  font-family: 'Impact';
-  src: url('Impact.eot');
-  src: url('Impact.eot?#iefix') format('embedded-opentype'),
-  url('Impact.woff') format('woff'),
-  url('Impact.ttf') format('truetype');
-  font-style: normal;
-  font-weight: normal;
-}
+
 .upper {
   text-transform: uppercase;
 }
@@ -308,7 +300,7 @@ $primary-font: 'Impact';
     height: 310px;
     .label-text {
       font: {
-        family: Impact;
+        family: $primary-font;
         size: 56px;
       }
       color: #000;
