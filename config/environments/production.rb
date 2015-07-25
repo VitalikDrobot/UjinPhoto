@@ -80,11 +80,11 @@ Rails.application.configure do
 
 
   config.action_mailer.default_url_options = {
-      :host => 'fathomless-ravine-3360.herokuapp.com',
+      :host => 'ujinphoto.herokuapp.com',
       :protocol => 'https'
   }
-  config.action_mailer.default_url_options = { :host => 'fathomless-ravine-3360.herokuapp.com'}
-  Rails.application.routes.default_url_options[:host] = 'fathomless-ravine-3360.herokuapp.com'
+  config.action_mailer.default_url_options = { :host => 'ujinphoto.herokuapp.com'}
+  Rails.application.routes.default_url_options[:host] = 'ujinphoto.herokuapp.com'
   config.action_mailer.perform_deliveries = true
   config.action_mailer.raise_delivery_errors = false
   config.action_mailer.default :charset => "utf-8"

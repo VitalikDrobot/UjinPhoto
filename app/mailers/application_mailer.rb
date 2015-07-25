@@ -1,4 +1,4 @@
 class ApplicationMailer < ActionMailer::Base
-  default from: "fathomless-ravine-3360.herokuapp.com"
+  default from: "ujinphoto.herokuapp.com"
   layout 'mailer'
 end
