@@ -386,11 +386,12 @@
           margin-right: 11px;
         }
         input[type="submit"] {
-          font-size: 24px;
+          font-size: 21px;
           height: 48px;
           width:128px;
           left: 15px;
           margin-top: 17px;
+          bottom: -41px;
         }
       }
     }
@@ -663,6 +664,9 @@
     .question {
       form {
         height: 300px;
+        .label-text {
+          font-size: 35px;
+        }
         .input-text {
           height: 157px;
           width: 609px;
@@ -673,8 +677,9 @@
           width: 330px;
         }
         input[type="submit"] {
-          font-size: 32px;
-          width: 220px
+          font-size: 31px;
+          width: 220px;
+          bottom: -38px;
         }
       }
     }
@@ -912,10 +917,11 @@
           }
         }
         input[type="submit"] {
-          font-size: 35px;
+          font-size: 32px;
           height: 58px;
           margin-bottom: 162px;
           width: 220px;
+          bottom: -36px;
         }
       }
     }
@@ -1002,8 +1008,10 @@
       .ui-tabs {
         .ui-tabs-nav {
           li {
+            height: 55px;
             a {
-              padding: 10px 45px;
+              padding: 10px 46px;
+              font-size: 17px;
             }
           }
         }
@@ -1185,7 +1193,7 @@
           margin-top: 60px;
         }
         input[type="submit"] {
-          font-size: 35px;
+          font-size: 34px;
           position: relative;
           top: 75px;
           height: 58px;
