@@ -175,8 +175,6 @@ $primary-font: 'FuturaLight';
       }
       p {
         color: #585858;
-        font-size: 23px;
-        left: 200px;
         position: relative;
         text-align: center;
         text-transform: uppercase;
@@ -187,20 +185,6 @@ $primary-font: 'FuturaLight';
     &.big-message {
       a {
         background-position: 0 0;
-        width: 450px;
-        height: 159px;
-      }
-    }
-    &.small-message {
-      a {
-        background-position: -480px 0;
-        height: 159px;
-        width: 156px;
-      }
-    }
-    &.small-text {
-      p {
-        font-size: 43px;
       }
     }
   }
@@ -211,7 +195,6 @@ $primary-font: 'FuturaLight';
   overflow: hidden;
   position: relative;
   top: 15px;
-  width: 666px;
   .call-text {
     a {
       p {
@@ -228,14 +211,12 @@ $primary-font: 'FuturaLight';
   clear: both;
   form {
     .label-phone {
-      font-size: 32px;
       padding-bottom: 10px;
     }
     .input-phone {
       border: 3px dashed #000;
       border-radius: 10px;
       margin: 0 auto 10px;
-      width: 585px;
       input[type="text"] {
         color: #585858;
         display: inline-block;
@@ -266,7 +247,6 @@ $primary-font: 'FuturaLight';
       color: #585858;
       font-size: 26px;
       height: 50px;
-      width: 449px;
       margin-bottom: 162px;
       cursor: pointer;
     }
@@ -284,20 +264,15 @@ $primary-font: 'FuturaLight';
     overflow: hidden;
     li {
       display: inline;
-      margin-right: 105px;
     }
   }
 }
 .question {
   background-color: #FFA800;
   text-align: center;
-  padding: 23px 94px 21px 52px;
-  height: 262px;
-  margin-bottom: 40px;
   box-shadow: 0 7px 13px 0 #080808;
   form {
     overflow: hidden;
-    height: 310px;
     .label-text {
       font: {
         family: $primary-font;
@@ -306,11 +281,8 @@ $primary-font: 'FuturaLight';
       color: #000;
     }
     textarea {
-      width: 878px;
-      height: 130px;
       padding: 10px;
       resize: none;
-      font-size: 25px;
     }
     input[type="submit"] {
       background-color: #ffa800;
@@ -320,25 +292,18 @@ $primary-font: 'FuturaLight';
       color: #585858;
       cursor: pointer;
       float: left;
-      height: 58px;
       left: 17px;
-      margin-bottom: 162px;
       position: relative;
-      width: 220px;
       font: {
         family: $primary-font;
-        size: 38px;
       }
     }
     input[type="text"] {
       float: right;
-      height: 47px;
-      width: 446px;
       margin-top: 9px;
       padding-left: 5px;
       font: {
         family: 'MyriadProRegular';
-        size: 24px;
       }
       color: #B0B0B0;
       box-shadow: 0px -3px 17px 0 #808080 inset;
@@ -347,11 +312,8 @@ $primary-font: 'FuturaLight';
 }
 
 .wrapper {
-  min-width: 1024px;
-  width: 1024px;
   margin: 0 auto;
   header {
-    width: 1024px;
     padding-top: 20px;
     background: {
       image: cloudinary-url('background-header.fw.png');
@@ -390,7 +352,6 @@ $primary-font: 'FuturaLight';
             a {
               font: {
                 family: $primary-font;
-                size: 42px;
               }
               color: #A8A8A8;
               text-transform: uppercase;
@@ -398,7 +359,6 @@ $primary-font: 'FuturaLight';
           }
         }
         #nav-page3 {
-          width: 957px;
           li {
             text-align: center;
             width: 238px;
@@ -417,8 +377,6 @@ $primary-font: 'FuturaLight';
       }
       li {
         display: inline-block;
-        width: 311px;
-        height: 467px;
         position: relative;
         margin: 2px 10px 2px 2px;
         border: 5px solid transparent;
@@ -489,17 +447,13 @@ $primary-font: 'FuturaLight';
         overflow: hidden;
         background-color: #FFA800;
         padding: {
-          left: 53px;
           bottom: 23px;
         }
         li {
-          width: 278px;
           float: left;
           padding-top: 24px;
-          margin-right: 40px;
           font: {
             family: Arial;
-            size: 21px;
           }
           color: #535353;
         }
@@ -507,18 +461,14 @@ $primary-font: 'FuturaLight';
     }
   }
   .content {
-    width: 1024px;
     .subject-matter {
       background-color: #585858;
-      width: 1024px;
       padding: 70px 0;
       box-shadow: -3px 17px 24px -15px #000000 inset;
       p {
         color: #fff;
-        font-size: 29px;
         margin: 0 auto;
         text-align: center;
-        width: 768px;
       }
     }
     .slider {
@@ -545,7 +495,6 @@ $primary-font: 'FuturaLight';
       box-shadow: -3px 17px 24px -15px #000000 inset;
       h3 {
         font: {
-          size: 32px;
           weight: normal;
         }
         text-align: center;
@@ -555,7 +504,6 @@ $primary-font: 'FuturaLight';
         overflow: hidden;
         li {
           border: 2px solid #C9C9C9;
-          margin: 0 80px 36px 84px;
           background-color: #EFEBE5;
           &:first-child {
             background-color: #E6EFE5;
@@ -567,7 +515,6 @@ $primary-font: 'FuturaLight';
             color: #000;
             float: left;
             font: {
-              size: 26px;
               weight: normal;
             }
             position: relative;
@@ -582,7 +529,6 @@ $primary-font: 'FuturaLight';
           }
           .description {
             overflow: hidden;
-            margin: 24px 25px 24px 40px;
             li {
               border: none;
               margin: 0;
@@ -602,7 +548,6 @@ $primary-font: 'FuturaLight';
       .more-information {
         padding-bottom: 26px;
         li {
-          font-size: 27px;
           text-align: center;
           color: #000;
         }
@@ -611,7 +556,6 @@ $primary-font: 'FuturaLight';
     .conditions {
       background-color: #585858;
       color: #fff;
-      padding: 45px 58px 34px 63px;
       border-bottom: 25px solid #FFA800;
       box-shadow: 0 -7px 14px -4px #000;
       li {
@@ -621,7 +565,6 @@ $primary-font: 'FuturaLight';
           position: 0 8px, 100% 12px;
         }
         overflow: hidden;
-        font-size: 25px;
         padding-left: 25px;
       }
     }
@@ -643,8 +586,6 @@ $primary-font: 'FuturaLight';
       .invitation {
         overflow: hidden;
         li {
-          width: 194px;
-          font-size: 21px;
           color: #585858;
           float: left;
           padding-right: 10px;
@@ -707,17 +648,9 @@ $primary-font: 'FuturaLight';
         table {
           margin-left: 121px;
           td {
-            padding-bottom: 60px;
             color: #fff;
-            &.name {
-              width: 323px;
-              font-size: 22px;
-              padding-right: 35px;
-            }
             &.quantity {
-              font-size: 40px;
               width: 120px;
-              padding-right: 108px;
               line-height: 43%;
               text-align: center;
               span {
