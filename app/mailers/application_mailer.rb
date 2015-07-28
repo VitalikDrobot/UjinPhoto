@@ -1,4 +1,4 @@
 class ApplicationMailer < ActionMailer::Base
-  default from: "ujinphoto.herokuapp.com"
+  default from: "ujinphoto.ck.ua"
   layout 'mailer'
 end
