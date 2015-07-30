@@ -30,5 +30,3 @@ bower.json
 # Ignore application configuration
 /config/application.yml
 config/cloudinary.yml
-.cloudinary.static
-.cloudinary.static.trash
