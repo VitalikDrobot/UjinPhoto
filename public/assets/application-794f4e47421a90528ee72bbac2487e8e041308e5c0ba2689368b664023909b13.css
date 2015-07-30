@@ -1,0 +1,2779 @@
+/*! jQuery UI - v1.9.2 - 2015-05-24
+* http://jqueryui.com
+* Includes: jquery.ui.core.css, jquery.ui.tabs.css, jquery.ui.theme.css
+* To view and modify this theme, visit http://jqueryui.com/themeroller/?ffDefault=Trebuchet%20MS%2CHelvetica%2CArial%2Csans-serif&fwDefault=bold&fsDefault=1.1em&cornerRadius=6px&bgColorHeader=dddddd&bgTextureHeader=glass&bgImgOpacityHeader=35&borderColorHeader=bbbbbb&fcHeader=444444&iconColorHeader=999999&bgColorContent=c9c9c9&bgTextureContent=inset_soft&bgImgOpacityContent=50&borderColorContent=aaaaaa&fcContent=333333&iconColorContent=999999&bgColorDefault=eeeeee&bgTextureDefault=glass&bgImgOpacityDefault=60&borderColorDefault=cccccc&fcDefault=3383bb&iconColorDefault=70b2e1&bgColorHover=f8f8f8&bgTextureHover=glass&bgImgOpacityHover=100&borderColorHover=bbbbbb&fcHover=599fcf&iconColorHover=3383bb&bgColorActive=999999&bgTextureActive=inset_hard&bgImgOpacityActive=75&borderColorActive=999999&fcActive=ffffff&iconColorActive=454545&bgColorHighlight=eeeeee&bgTextureHighlight=flat&bgImgOpacityHighlight=55&borderColorHighlight=ffffff&fcHighlight=444444&iconColorHighlight=3383bb&bgColorError=c0402a&bgTextureError=flat&bgImgOpacityError=55&borderColorError=c0402a&fcError=ffffff&iconColorError=fbc856&bgColorOverlay=eeeeee&bgTextureOverlay=flat&bgImgOpacityOverlay=0&opacityOverlay=80&bgColorShadow=aaaaaa&bgTextureShadow=flat&bgImgOpacityShadow=0&opacityShadow=60&thicknessShadow=4px&offsetTopShadow=-4px&offsetLeftShadow=-4px&cornerRadiusShadow=0px
+* Copyright 2015 jQuery Foundation and other contributors; Licensed MIT */
+
+/* Layout helpers
+----------------------------------*/
+
+.ui-helper-hidden { display: none; }
+.ui-helper-hidden-accessible { border: 0; clip: rect(0 0 0 0); height: 1px; margin: -1px; overflow: hidden; padding: 0; position: absolute; width: 1px; }
+.ui-helper-reset { margin: 0; padding: 0; border: 0; outline: 0; line-height: 1.3; text-decoration: none; font-size: 100%; list-style: none; }
+.ui-helper-clearfix:before, .ui-helper-clearfix:after { content: ""; display: table; }
+.ui-helper-clearfix:after { clear: both; }
+.ui-helper-clearfix { zoom: 1; }
+.ui-helper-zfix { width: 100%; height: 100%; top: 0; left: 0; position: absolute; opacity: 0; filter:Alpha(Opacity=0); }
+
+
+/* Interaction Cues
+----------------------------------*/
+.ui-state-disabled { cursor: default !important; }
+
+
+/* Icons
+----------------------------------*/
+
+/* states and images */
+.ui-icon { display: block; text-indent: -99999px; overflow: hidden; background-repeat: no-repeat; }
+
+
+/* Misc visuals
+----------------------------------*/
+
+/* Overlays */
+.ui-widget-overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }
+.ui-tabs { position: relative; padding: .2em; zoom: 1; } /* position: relative prevents IE scroll bug (element with position: relative inside container with overflow: auto appear as "fixed") */
+.ui-tabs .ui-tabs-nav { margin: 0; padding: .2em .2em 0; }
+.ui-tabs .ui-tabs-nav li { list-style: none; float: left; position: relative; top: 0; margin: 1px .2em 0 0; border-bottom: 0; padding: 0; white-space: nowrap; }
+.ui-tabs .ui-tabs-nav li a { float: left; padding: .5em 1em; text-decoration: none; }
+.ui-tabs .ui-tabs-nav li.ui-tabs-active { margin-bottom: -1px; padding-bottom: 1px; }
+.ui-tabs .ui-tabs-nav li.ui-tabs-active a, .ui-tabs .ui-tabs-nav li.ui-state-disabled a, .ui-tabs .ui-tabs-nav li.ui-tabs-loading a { cursor: text; }
+.ui-tabs .ui-tabs-nav li a, .ui-tabs-collapsible .ui-tabs-nav li.ui-tabs-active a { cursor: pointer; } /* first selector in group seems obsolete, but required to overcome bug in Opera applying cursor: text overall if defined elsewhere... */
+.ui-tabs .ui-tabs-panel { display: block; border-width: 0; padding: 1em 1.4em; background: none; }
+
+/* Component containers
+----------------------------------*/
+.ui-widget { font-family: Trebuchet MS,Helvetica,Arial,sans-serif; font-size: 1.1em; }
+.ui-widget .ui-widget { font-size: 1em; }
+.ui-widget input, .ui-widget select, .ui-widget textarea, .ui-widget button { font-family: Trebuchet MS,Helvetica,Arial,sans-serif; font-size: 1em; }
+.ui-widget-content { border: 1px solid #aaaaaa; background: #c9c9c9; color: #333333; }
+.ui-widget-content a { color: #333333; }
+.ui-widget-header { border: 1px solid #bbbbbb; background: #dddddd; color: #444444; font-weight: bold; }
+.ui-widget-header a { color: #444444; }
+
+/* Interaction states
+----------------------------------*/
+.ui-state-default, .ui-widget-content .ui-state-default, .ui-widget-header .ui-state-default { border: 1px solid #cccccc; background: #eeeeee; font-weight: bold; color: #3383bb; }
+.ui-state-default a, .ui-state-default a:link, .ui-state-default a:visited { color: #3383bb; text-decoration: none; }
+.ui-state-hover, .ui-widget-content .ui-state-hover, .ui-widget-header .ui-state-hover, .ui-state-focus, .ui-widget-content .ui-state-focus, .ui-widget-header .ui-state-focus { border: 1px solid #bbbbbb; background: #f8f8f8; font-weight: bold; color: #599fcf; }
+.ui-state-hover a, .ui-state-hover a:hover, .ui-state-hover a:link, .ui-state-hover a:visited { color: #599fcf; text-decoration: none; }
+.ui-state-active, .ui-widget-content .ui-state-active, .ui-widget-header .ui-state-active { border: 1px solid #999999; background: #999999; font-weight: bold; color: #ffffff; }
+.ui-state-active a, .ui-state-active a:link, .ui-state-active a:visited { color: #ffffff; text-decoration: none; }
+
+/* Interaction Cues
+----------------------------------*/
+.ui-state-highlight, .ui-widget-content .ui-state-highlight, .ui-widget-header .ui-state-highlight  {border: 1px solid #ffffff; background: #eeeeee url("images/ui-bg_flat_55_eeeeee_40x100.png") 50% 50% repeat-x; color: #444444; }
+.ui-state-highlight a, .ui-widget-content .ui-state-highlight a,.ui-widget-header .ui-state-highlight a { color: #444444; }
+.ui-state-error, .ui-widget-content .ui-state-error, .ui-widget-header .ui-state-error {border: 1px solid #c0402a; background: #c0402a url("images/ui-bg_flat_55_c0402a_40x100.png") 50% 50% repeat-x; color: #ffffff; }
+.ui-state-error a, .ui-widget-content .ui-state-error a, .ui-widget-header .ui-state-error a { color: #ffffff; }
+.ui-state-error-text, .ui-widget-content .ui-state-error-text, .ui-widget-header .ui-state-error-text { color: #ffffff; }
+.ui-priority-primary, .ui-widget-content .ui-priority-primary, .ui-widget-header .ui-priority-primary { font-weight: bold; }
+.ui-priority-secondary, .ui-widget-content .ui-priority-secondary,  .ui-widget-header .ui-priority-secondary { opacity: .7; filter:Alpha(Opacity=70); font-weight: normal; }
+.ui-state-disabled, .ui-widget-content .ui-state-disabled, .ui-widget-header .ui-state-disabled { opacity: .35; filter:Alpha(Opacity=35); background-image: none; }
+.ui-state-disabled .ui-icon { filter:Alpha(Opacity=35); } /* For IE8 - See #6059 */
+
+/* Icons
+----------------------------------*/
+
+/* states and images */
+.ui-icon { width: 16px; height: 16px; background-image: url("images/ui-icons_999999_256x240.png"); }
+.ui-widget-content .ui-icon {background-image: url("images/ui-icons_999999_256x240.png"); }
+.ui-widget-header .ui-icon {background-image: url("images/ui-icons_999999_256x240.png"); }
+.ui-state-default .ui-icon { background-image: url("images/ui-icons_70b2e1_256x240.png"); }
+.ui-state-hover .ui-icon, .ui-state-focus .ui-icon {background-image: url("images/ui-icons_3383bb_256x240.png"); }
+.ui-state-active .ui-icon {background-image: url("images/ui-icons_454545_256x240.png"); }
+.ui-state-highlight .ui-icon {background-image: url("images/ui-icons_3383bb_256x240.png"); }
+.ui-state-error .ui-icon, .ui-state-error-text .ui-icon {background-image: url("images/ui-icons_fbc856_256x240.png"); }
+
+/* positioning */
+.ui-icon-carat-1-n { background-position: 0 0; }
+.ui-icon-carat-1-ne { background-position: -16px 0; }
+.ui-icon-carat-1-e { background-position: -32px 0; }
+.ui-icon-carat-1-se { background-position: -48px 0; }
+.ui-icon-carat-1-s { background-position: -64px 0; }
+.ui-icon-carat-1-sw { background-position: -80px 0; }
+.ui-icon-carat-1-w { background-position: -96px 0; }
+.ui-icon-carat-1-nw { background-position: -112px 0; }
+.ui-icon-carat-2-n-s { background-position: -128px 0; }
+.ui-icon-carat-2-e-w { background-position: -144px 0; }
+.ui-icon-triangle-1-n { background-position: 0 -16px; }
+.ui-icon-triangle-1-ne { background-position: -16px -16px; }
+.ui-icon-triangle-1-e { background-position: -32px -16px; }
+.ui-icon-triangle-1-se { background-position: -48px -16px; }
+.ui-icon-triangle-1-s { background-position: -64px -16px; }
+.ui-icon-triangle-1-sw { background-position: -80px -16px; }
+.ui-icon-triangle-1-w { background-position: -96px -16px; }
+.ui-icon-triangle-1-nw { background-position: -112px -16px; }
+.ui-icon-triangle-2-n-s { background-position: -128px -16px; }
+.ui-icon-triangle-2-e-w { background-position: -144px -16px; }
+.ui-icon-arrow-1-n { background-position: 0 -32px; }
+.ui-icon-arrow-1-ne { background-position: -16px -32px; }
+.ui-icon-arrow-1-e { background-position: -32px -32px; }
+.ui-icon-arrow-1-se { background-position: -48px -32px; }
+.ui-icon-arrow-1-s { background-position: -64px -32px; }
+.ui-icon-arrow-1-sw { background-position: -80px -32px; }
+.ui-icon-arrow-1-w { background-position: -96px -32px; }
+.ui-icon-arrow-1-nw { background-position: -112px -32px; }
+.ui-icon-arrow-2-n-s { background-position: -128px -32px; }
+.ui-icon-arrow-2-ne-sw { background-position: -144px -32px; }
+.ui-icon-arrow-2-e-w { background-position: -160px -32px; }
+.ui-icon-arrow-2-se-nw { background-position: -176px -32px; }
+.ui-icon-arrowstop-1-n { background-position: -192px -32px; }
+.ui-icon-arrowstop-1-e { background-position: -208px -32px; }
+.ui-icon-arrowstop-1-s { background-position: -224px -32px; }
+.ui-icon-arrowstop-1-w { background-position: -240px -32px; }
+.ui-icon-arrowthick-1-n { background-position: 0 -48px; }
+.ui-icon-arrowthick-1-ne { background-position: -16px -48px; }
+.ui-icon-arrowthick-1-e { background-position: -32px -48px; }
+.ui-icon-arrowthick-1-se { background-position: -48px -48px; }
+.ui-icon-arrowthick-1-s { background-position: -64px -48px; }
+.ui-icon-arrowthick-1-sw { background-position: -80px -48px; }
+.ui-icon-arrowthick-1-w { background-position: -96px -48px; }
+.ui-icon-arrowthick-1-nw { background-position: -112px -48px; }
+.ui-icon-arrowthick-2-n-s { background-position: -128px -48px; }
+.ui-icon-arrowthick-2-ne-sw { background-position: -144px -48px; }
+.ui-icon-arrowthick-2-e-w { background-position: -160px -48px; }
+.ui-icon-arrowthick-2-se-nw { background-position: -176px -48px; }
+.ui-icon-arrowthickstop-1-n { background-position: -192px -48px; }
+.ui-icon-arrowthickstop-1-e { background-position: -208px -48px; }
+.ui-icon-arrowthickstop-1-s { background-position: -224px -48px; }
+.ui-icon-arrowthickstop-1-w { background-position: -240px -48px; }
+.ui-icon-arrowreturnthick-1-w { background-position: 0 -64px; }
+.ui-icon-arrowreturnthick-1-n { background-position: -16px -64px; }
+.ui-icon-arrowreturnthick-1-e { background-position: -32px -64px; }
+.ui-icon-arrowreturnthick-1-s { background-position: -48px -64px; }
+.ui-icon-arrowreturn-1-w { background-position: -64px -64px; }
+.ui-icon-arrowreturn-1-n { background-position: -80px -64px; }
+.ui-icon-arrowreturn-1-e { background-position: -96px -64px; }
+.ui-icon-arrowreturn-1-s { background-position: -112px -64px; }
+.ui-icon-arrowrefresh-1-w { background-position: -128px -64px; }
+.ui-icon-arrowrefresh-1-n { background-position: -144px -64px; }
+.ui-icon-arrowrefresh-1-e { background-position: -160px -64px; }
+.ui-icon-arrowrefresh-1-s { background-position: -176px -64px; }
+.ui-icon-arrow-4 { background-position: 0 -80px; }
+.ui-icon-arrow-4-diag { background-position: -16px -80px; }
+.ui-icon-extlink { background-position: -32px -80px; }
+.ui-icon-newwin { background-position: -48px -80px; }
+.ui-icon-refresh { background-position: -64px -80px; }
+.ui-icon-shuffle { background-position: -80px -80px; }
+.ui-icon-transfer-e-w { background-position: -96px -80px; }
+.ui-icon-transferthick-e-w { background-position: -112px -80px; }
+.ui-icon-folder-collapsed { background-position: 0 -96px; }
+.ui-icon-folder-open { background-position: -16px -96px; }
+.ui-icon-document { background-position: -32px -96px; }
+.ui-icon-document-b { background-position: -48px -96px; }
+.ui-icon-note { background-position: -64px -96px; }
+.ui-icon-mail-closed { background-position: -80px -96px; }
+.ui-icon-mail-open { background-position: -96px -96px; }
+.ui-icon-suitcase { background-position: -112px -96px; }
+.ui-icon-comment { background-position: -128px -96px; }
+.ui-icon-person { background-position: -144px -96px; }
+.ui-icon-print { background-position: -160px -96px; }
+.ui-icon-trash { background-position: -176px -96px; }
+.ui-icon-locked { background-position: -192px -96px; }
+.ui-icon-unlocked { background-position: -208px -96px; }
+.ui-icon-bookmark { background-position: -224px -96px; }
+.ui-icon-tag { background-position: -240px -96px; }
+.ui-icon-home { background-position: 0 -112px; }
+.ui-icon-flag { background-position: -16px -112px; }
+.ui-icon-calendar { background-position: -32px -112px; }
+.ui-icon-cart { background-position: -48px -112px; }
+.ui-icon-pencil { background-position: -64px -112px; }
+.ui-icon-clock { background-position: -80px -112px; }
+.ui-icon-disk { background-position: -96px -112px; }
+.ui-icon-calculator { background-position: -112px -112px; }
+.ui-icon-zoomin { background-position: -128px -112px; }
+.ui-icon-zoomout { background-position: -144px -112px; }
+.ui-icon-search { background-position: -160px -112px; }
+.ui-icon-wrench { background-position: -176px -112px; }
+.ui-icon-gear { background-position: -192px -112px; }
+.ui-icon-heart { background-position: -208px -112px; }
+.ui-icon-star { background-position: -224px -112px; }
+.ui-icon-link { background-position: -240px -112px; }
+.ui-icon-cancel { background-position: 0 -128px; }
+.ui-icon-plus { background-position: -16px -128px; }
+.ui-icon-plusthick { background-position: -32px -128px; }
+.ui-icon-minus { background-position: -48px -128px; }
+.ui-icon-minusthick { background-position: -64px -128px; }
+.ui-icon-close { background-position: -80px -128px; }
+.ui-icon-closethick { background-position: -96px -128px; }
+.ui-icon-key { background-position: -112px -128px; }
+.ui-icon-lightbulb { background-position: -128px -128px; }
+.ui-icon-scissors { background-position: -144px -128px; }
+.ui-icon-clipboard { background-position: -160px -128px; }
+.ui-icon-copy { background-position: -176px -128px; }
+.ui-icon-contact { background-position: -192px -128px; }
+.ui-icon-image { background-position: -208px -128px; }
+.ui-icon-video { background-position: -224px -128px; }
+.ui-icon-script { background-position: -240px -128px; }
+.ui-icon-alert { background-position: 0 -144px; }
+.ui-icon-info { background-position: -16px -144px; }
+.ui-icon-notice { background-position: -32px -144px; }
+.ui-icon-help { background-position: -48px -144px; }
+.ui-icon-check { background-position: -64px -144px; }
+.ui-icon-bullet { background-position: -80px -144px; }
+.ui-icon-radio-on { background-position: -96px -144px; }
+.ui-icon-radio-off { background-position: -112px -144px; }
+.ui-icon-pin-w { background-position: -128px -144px; }
+.ui-icon-pin-s { background-position: -144px -144px; }
+.ui-icon-play { background-position: 0 -160px; }
+.ui-icon-pause { background-position: -16px -160px; }
+.ui-icon-seek-next { background-position: -32px -160px; }
+.ui-icon-seek-prev { background-position: -48px -160px; }
+.ui-icon-seek-end { background-position: -64px -160px; }
+.ui-icon-seek-start { background-position: -80px -160px; }
+/* ui-icon-seek-first is deprecated, use ui-icon-seek-start instead */
+.ui-icon-seek-first { background-position: -80px -160px; }
+.ui-icon-stop { background-position: -96px -160px; }
+.ui-icon-eject { background-position: -112px -160px; }
+.ui-icon-volume-off { background-position: -128px -160px; }
+.ui-icon-volume-on { background-position: -144px -160px; }
+.ui-icon-power { background-position: 0 -176px; }
+.ui-icon-signal-diag { background-position: -16px -176px; }
+.ui-icon-signal { background-position: -32px -176px; }
+.ui-icon-battery-0 { background-position: -48px -176px; }
+.ui-icon-battery-1 { background-position: -64px -176px; }
+.ui-icon-battery-2 { background-position: -80px -176px; }
+.ui-icon-battery-3 { background-position: -96px -176px; }
+.ui-icon-circle-plus { background-position: 0 -192px; }
+.ui-icon-circle-minus { background-position: -16px -192px; }
+.ui-icon-circle-close { background-position: -32px -192px; }
+.ui-icon-circle-triangle-e { background-position: -48px -192px; }
+.ui-icon-circle-triangle-s { background-position: -64px -192px; }
+.ui-icon-circle-triangle-w { background-position: -80px -192px; }
+.ui-icon-circle-triangle-n { background-position: -96px -192px; }
+.ui-icon-circle-arrow-e { background-position: -112px -192px; }
+.ui-icon-circle-arrow-s { background-position: -128px -192px; }
+.ui-icon-circle-arrow-w { background-position: -144px -192px; }
+.ui-icon-circle-arrow-n { background-position: -160px -192px; }
+.ui-icon-circle-zoomin { background-position: -176px -192px; }
+.ui-icon-circle-zoomout { background-position: -192px -192px; }
+.ui-icon-circle-check { background-position: -208px -192px; }
+.ui-icon-circlesmall-plus { background-position: 0 -208px; }
+.ui-icon-circlesmall-minus { background-position: -16px -208px; }
+.ui-icon-circlesmall-close { background-position: -32px -208px; }
+.ui-icon-squaresmall-plus { background-position: -48px -208px; }
+.ui-icon-squaresmall-minus { background-position: -64px -208px; }
+.ui-icon-squaresmall-close { background-position: -80px -208px; }
+.ui-icon-grip-dotted-vertical { background-position: 0 -224px; }
+.ui-icon-grip-dotted-horizontal { background-position: -16px -224px; }
+.ui-icon-grip-solid-vertical { background-position: -32px -224px; }
+.ui-icon-grip-solid-horizontal { background-position: -48px -224px; }
+.ui-icon-gripsmall-diagonal-se { background-position: -64px -224px; }
+.ui-icon-grip-diagonal-se { background-position: -80px -224px; }
+
+
+/* Misc visuals
+----------------------------------*/
+
+/* Corner radius */
+/* .ui-corner-all, .ui-corner-top, .ui-corner-left, .ui-corner-tl { -moz-border-radius-topleft: 6px; -webkit-border-top-left-radius: 6px; -khtml-border-top-left-radius: 6px; border-top-left-radius: 6px; }
+.ui-corner-all, .ui-corner-top, .ui-corner-right, .ui-corner-tr { -moz-border-radius-topright: 6px; -webkit-border-top-right-radius: 6px; -khtml-border-top-right-radius: 6px; border-top-right-radius: 6px; }
+.ui-corner-all, .ui-corner-bottom, .ui-corner-left, .ui-corner-bl { -moz-border-radius-bottomleft: 6px; -webkit-border-bottom-left-radius: 6px; -khtml-border-bottom-left-radius: 6px; border-bottom-left-radius: 6px; }
+.ui-corner-all, .ui-corner-bottom, .ui-corner-right, .ui-corner-br { -moz-border-radius-bottomright: 6px; -webkit-border-bottom-right-radius: 6px; -khtml-border-bottom-right-radius: 6px; border-bottom-right-radius: 6px; } */
+
+/* Overlays */
+.ui-widget-overlay { background: #eeeeee url("images/ui-bg_flat_0_eeeeee_40x100.png") 50% 50% repeat-x; opacity: .8;filter:Alpha(Opacity=80); }
+.ui-widget-shadow { margin: -4px 0 0 -4px; padding: 4px; background: #aaaaaa url("images/ui-bg_flat_0_aaaaaa_40x100.png") 50% 50% repeat-x; opacity: .6;filter:Alpha(Opacity=60); -moz-border-radius: 0px; -khtml-border-radius: 0px; -webkit-border-radius: 0px; border-radius: 0px; }
+/* Preload images */
+
+body:after {
+  content: url('close.png') url('loading.gif');
+  display: none;
+}
+
+.lightboxOverlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 9999;
+  background-color: black;
+  filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=80);
+  opacity: 0.8;
+  display: none;
+}
+
+.lightbox {
+  position: absolute;
+  left: 0;
+  width: 100%;
+  z-index: 10000;
+  text-align: center;
+  line-height: 0;
+  font-weight: normal;
+}
+
+.lightbox .lb-image {
+  display: block;
+  height: auto;
+  max-width: inherit;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  -ms-border-radius: 3px;
+  -o-border-radius: 3px;
+  border-radius: 3px;
+}
+
+.lightbox a img {
+  border: none;
+}
+
+.lb-outerContainer {
+  position: relative;
+  background-color: white;
+  *zoom: 1;
+  width: 250px;
+  height: 250px;
+  margin: 0 auto;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  -ms-border-radius: 4px;
+  -o-border-radius: 4px;
+  border-radius: 4px;
+}
+
+.lb-outerContainer:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+.lb-container {
+  padding: 4px;
+}
+
+.lb-loader {
+  position: absolute;
+  top: 43%;
+  left: 0;
+  height: 25%;
+  width: 100%;
+  text-align: center;
+  line-height: 0;
+}
+
+.lb-cancel {
+  display: block;
+  width: 32px;
+  height: 32px;
+  margin: 0 auto;
+  background: url('loading.gif') no-repeat;
+}
+
+.lb-nav {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  z-index: 10;
+}
+
+.lb-container > .nav {
+  left: 0;
+}
+
+.lb-dataContainer {
+  margin: 0 auto;
+  padding-top: 5px;
+  *zoom: 1;
+  width: 100%;
+  -moz-border-radius-bottomleft: 4px;
+  -webkit-border-bottom-left-radius: 4px;
+  border-bottom-left-radius: 4px;
+  -moz-border-radius-bottomright: 4px;
+  -webkit-border-bottom-right-radius: 4px;
+  border-bottom-right-radius: 4px;
+}
+
+.lb-dataContainer:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+.lb-data {
+  padding: 0 4px;
+  color: #ccc;
+}
+
+.lb-data .lb-details {
+  width: 85%;
+  float: left;
+  text-align: left;
+  line-height: 1.1em;
+}
+
+.lb-data .lb-caption {
+  font-size: 13px;
+  font-weight: bold;
+  line-height: 1em;
+}
+
+.lb-data .lb-number {
+  display: block;
+  clear: left;
+  padding-bottom: 1em;
+  font-size: 12px;
+  color: #999999;
+}
+
+.lb-data .lb-close {
+  display: block;
+  float: right;
+  width: 30px;
+  height: 30px;
+  background: url('close.png') top right no-repeat;
+  text-align: right;
+  outline: none;
+  filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=70);
+  opacity: 0.7;
+  -webkit-transition: opacity 0.2s;
+  -moz-transition: opacity 0.2s;
+  -o-transition: opacity 0.2s;
+  transition: opacity 0.2s;
+}
+
+.lb-data .lb-close:hover {
+  cursor: pointer;
+  filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=100);
+  opacity: 1;
+}
+/* line 1, /home/igor/RubymineProjects/PhotoUjin/app/assets/stylesheets/pages.scss */
+html, body {
+  width: 100%;
+  height: 100%;
+}
+
+/* line 2, /home/igor/RubymineProjects/PhotoUjin/app/assets/stylesheets/pages.scss */
+body {
+  padding: 0;
+  margin: 0;
+  font: 12px 'Arial Unicode MS', sans-serif;
+  background: #fff;
+  color: #535353;
+}
+
+/* line 3, /home/igor/RubymineProjects/PhotoUjin/app/assets/stylesheets/pages.scss */
+div, p, a, span, em, strong, img, h1, h2, h3, h4, h5, h6, ul, ol, li, dl, dt, dd, table, td, tr, form, fieldset, label, select, checkbox, input, textarea {
+  padding: 0;
+  margin: 0;
+  outline: none;
+  list-style: none;
+}
+
+/* line 9, /home/igor/RubymineProjects/PhotoUjin/app/assets/stylesheets/pages.scss */
+select, input, textarea {
+  font-size: 12px;
+  vertical-align: middle;
+}
+
+/* line 10, /home/igor/RubymineProjects/PhotoUjin/app/assets/stylesheets/pages.scss */
+textarea {
+  vertical-align: top;
+}
+
+/* line 11, /home/igor/RubymineProjects/PhotoUjin/app/assets/stylesheets/pages.scss */
+:focus {
+  outline: none;
+}
+
+/* line 12, /home/igor/RubymineProjects/PhotoUjin/app/assets/stylesheets/pages.scss */
+input[type=submit] {
+  cursor: pointer;
+}
+
+/* img, fieldset                  { border:0; } */
+/* line 14, /home/igor/RubymineProjects/PhotoUjin/app/assets/stylesheets/pages.scss */
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+/* line 15, /home/igor/RubymineProjects/PhotoUjin/app/assets/stylesheets/pages.scss */
+a:link, a:visited {
+  font: 12px Arial, sans-serif;
+  color: #000;
+  text-decoration: none;
+}
+
+/* line 16, /home/igor/RubymineProjects/PhotoUjin/app/assets/stylesheets/pages.scss */
+a:hover {
+  text-decoration: none;
+}
+
+/* line 18, /home/igor/RubymineProjects/PhotoUjin/app/assets/stylesheets/pages.scss */
+.float-r {
+  float: right !important;
+}
+
+/* line 19, /home/igor/RubymineProjects/PhotoUjin/app/assets/stylesheets/pages.scss */
+.float-l {
+  float: left !important;
+}
+
+/* line 20, /home/igor/RubymineProjects/PhotoUjin/app/assets/stylesheets/pages.scss */
+.no-float {
+  float: none !important;
+}
+
+/* line 21, /home/igor/RubymineProjects/PhotoUjin/app/assets/stylesheets/pages.scss */
+.no-border {
+  border: 0 !important;
+}
+
+/* line 22, /home/igor/RubymineProjects/PhotoUjin/app/assets/stylesheets/pages.scss */
+.no-bg {
+  background: none !important;
+}
+
+/* line 23, /home/igor/RubymineProjects/PhotoUjin/app/assets/stylesheets/pages.scss */
+.no-margin {
+  margin: 0 !important;
+}
+
+/* line 24, /home/igor/RubymineProjects/PhotoUjin/app/assets/stylesheets/pages.scss */
+.no-padding {
+  padding: 0 !important;
+}
+
+/* line 25, /home/igor/RubymineProjects/PhotoUjin/app/assets/stylesheets/pages.scss */
+.no-display {
+  display: none !important;
+}
+
+/* line 26, /home/igor/RubymineProjects/PhotoUjin/app/assets/stylesheets/pages.scss */
+.display {
+  display: block !important;
+}
+
+/* line 27, /home/igor/RubymineProjects/PhotoUjin/app/assets/stylesheets/pages.scss */
+.inline {
+  display: inline !important;
+}
+
+/* line 28, /home/igor/RubymineProjects/PhotoUjin/app/assets/stylesheets/pages.scss */
+.overflow {
+  overflow: hidden !important;
+}
+
+/* line 29, /home/igor/RubymineProjects/PhotoUjin/app/assets/stylesheets/pages.scss */
+.align-r {
+  text-align: right !important;
+}
+
+/* line 30, /home/igor/RubymineProjects/PhotoUjin/app/assets/stylesheets/pages.scss */
+.align-l {
+  text-align: left !important;
+}
+
+/* line 31, /home/igor/RubymineProjects/PhotoUjin/app/assets/stylesheets/pages.scss */
+.align-c {
+  text-align: center !important;
+}
+
+/* line 32, /home/igor/RubymineProjects/PhotoUjin/app/assets/stylesheets/pages.scss */
+.clear {
+  clear: both;
+}
+
+@font-face {
+  font-family: 'MyriadProRegular';
+  src: url("MyriadProRegular.eot");
+  src: url("MyriadProRegular.eot?#iefix") format("embedded-opentype"), url("MyriadProRegular.woff") format("woff"), url("MyriadProRegular.ttf") format("truetype");
+  font-style: normal;
+  font-weight: normal;
+}
+@font-face {
+  font-family: 'FuturaLight';
+  src: url("FuturaLight.eot");
+  src: url("FuturaLight.eot?#iefix") format("embedded-opentype"), url("FuturaLight.woff") format("woff"), url("FuturaLight.ttf") format("truetype");
+  font-style: normal;
+  font-weight: normal;
+}
+/* line 54, /home/igor/RubymineProjects/PhotoUjin/app/assets/stylesheets/pages.scss */
+.upper {
+  text-transform: uppercase;
+}
+
+/* line 57, /home/igor/RubymineProjects/PhotoUjin/app/assets/stylesheets/pages.scss */
+.offer {
+  margin-top: 10px;
+}
+
+/* Circular Content Carousel Style */
+/* line 61, /home/igor/RubymineProjects/PhotoUjin/app/assets/stylesheets/pages.scss */
+.ui-state-default a, .ui-state-default a:link, .ui-state-default a:visited {
+  color: #000;
+}
+
+/* line 64, /home/igor/RubymineProjects/PhotoUjin/app/assets/stylesheets/pages.scss */
+.ui-widget-header {
+  background: none;
+  border: none;
+}
+
+/* line 68, /home/igor/RubymineProjects/PhotoUjin/app/assets/stylesheets/pages.scss */
+.ui-widget-content {
+  background: none;
+  border: none;
+}
+
+/* line 72, /home/igor/RubymineProjects/PhotoUjin/app/assets/stylesheets/pages.scss */
+.ui-state-active, .ui-widget-content .ui-state-active, .ui-widget-header .ui-state-active {
+  background-color: #FFA800;
+}
+
+/* line 75, /home/igor/RubymineProjects/PhotoUjin/app/assets/stylesheets/pages.scss */
+.ui-tabs .ui-tabs-nav li {
+  height: 57px;
+  white-space: normal;
+  margin: 0;
+}
+
+/* line 80, /home/igor/RubymineProjects/PhotoUjin/app/assets/stylesheets/pages.scss */
+.ui-tabs .ui-tabs-nav li:first-child {
+  right: 0;
+}
+
+/* line 83, /home/igor/RubymineProjects/PhotoUjin/app/assets/stylesheets/pages.scss */
+.ui-tabs .ui-tabs-nav li a {
+  font-family: 'MyriadProRegular';
+  font-size: 16px;
+  padding: 10px 36px;
+  text-align: center;
+}
+
+/* line 91, /home/igor/RubymineProjects/PhotoUjin/app/assets/stylesheets/pages.scss */
+.ui-tabs .ui-tabs-panel {
+  padding: 0;
+}
+
+/* line 94, /home/igor/RubymineProjects/PhotoUjin/app/assets/stylesheets/pages.scss */
+.ui-tabs {
+  padding: 0;
+  background-color: #585858;
+}
+
+/* line 98, /home/igor/RubymineProjects/PhotoUjin/app/assets/stylesheets/pages.scss */
+.ui-tabs .ui-tabs-nav {
+  padding: 0;
+}
+
+/* line 101, /home/igor/RubymineProjects/PhotoUjin/app/assets/stylesheets/pages.scss */
+.ui-tabs li {
+  border-radius: 24px 13px 0 0;
+  box-shadow: 2px 0 26px 0 #000000;
+  transform: skewX(-14deg);
+  transform-origin: 0 100% 0;
+}
+
+/* line 107, /home/igor/RubymineProjects/PhotoUjin/app/assets/stylesheets/pages.scss */
+.ui-corner-all, .ui-corner-bottom, .ui-corner-right, .ui-corner-br {
+  border-bottom-right-radius: 0;
+}
+
+/* line 110, /home/igor/RubymineProjects/PhotoUjin/app/assets/stylesheets/pages.scss */
+.ui-corner-all, .ui-corner-bottom, .ui-corner-left, .ui-corner-bl {
+  border-bottom-left-radius: 0;
+}
+
+/* line 113, /home/igor/RubymineProjects/PhotoUjin/app/assets/stylesheets/pages.scss */
+.ca-item-main {
+  padding: 20px;
+  position: absolute;
+  top: 5px;
+  left: 5px;
+  right: 5px;
+  bottom: 5px;
+  background: #fff;
+  overflow: hidden;
+  box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+}
+
+/* line 124, /home/igor/RubymineProjects/PhotoUjin/app/assets/stylesheets/pages.scss */
+.ca-icon {
+  width: 233px;
+  height: 189px;
+  position: relative;
+  margin: 0 auto;
+}
+
+/* line 130, /home/igor/RubymineProjects/PhotoUjin/app/assets/stylesheets/pages.scss */
+.tabs span {
+  width: 28px;
+  height: 56px;
+  position: absolute;
+  top: 50%;
+  margin-top: -19px;
+  left: 30px;
+  text-indent: -9000px;
+  opacity: 0.7;
+  cursor: pointer;
+  z-index: 100;
+}
+
+/* line 142, /home/igor/RubymineProjects/PhotoUjin/app/assets/stylesheets/pages.scss */
+.tabs span.ca-nav-prev {
+  background-image: url(http://res-5.cloudinary.com/dm1mh6uld/image/asset/left-arrow.fw-00506ab4f6df495c93bec725ed04fdb4.png);
+  background-repeat: no-repeat;
+  background-position: top left;
+}
+
+/* line 149, /home/igor/RubymineProjects/PhotoUjin/app/assets/stylesheets/pages.scss */
+.tabs span.ca-nav-next {
+  background-image: url(http://res-1.cloudinary.com/dm1mh6uld/image/asset/right-arrow.fw-93179dffa2911243063579ab655622c7.png);
+  background-repeat: no-repeat;
+  background-position: top right;
+  left: auto;
+  right: 30px;
+}
+
+/* line 158, /home/igor/RubymineProjects/PhotoUjin/app/assets/stylesheets/pages.scss */
+.tabs span:hover {
+  opacity: 1.0;
+}
+
+/* line 161, /home/igor/RubymineProjects/PhotoUjin/app/assets/stylesheets/pages.scss */
+.message {
+  position: relative;
+  bottom: 65px;
+  text-align: center;
+}
+/* line 165, /home/igor/RubymineProjects/PhotoUjin/app/assets/stylesheets/pages.scss */
+.message li {
+  margin: 0 14px;
+  display: inline-block;
+}
+/* line 168, /home/igor/RubymineProjects/PhotoUjin/app/assets/stylesheets/pages.scss */
+.message li a {
+  overflow: hidden;
+  display: block;
+  text-indent: -400px;
+  background-image: url(http://res-2.cloudinary.com/dm1mh6uld/image/asset/background-link.fw-a402f887dfde5f98086d1a22339c5e23.png);
+  background-repeat: no-repeat;
+}
+/* line 176, /home/igor/RubymineProjects/PhotoUjin/app/assets/stylesheets/pages.scss */
+.message li a p {
+  color: #585858;
+  position: relative;
+  text-align: center;
+  text-transform: uppercase;
+  top: 31px;
+  width: 442px;
+}
+/* line 186, /home/igor/RubymineProjects/PhotoUjin/app/assets/stylesheets/pages.scss */
+.message li.big-message a {
+  background-position: 0 0;
+}
+
+/* line 192, /home/igor/RubymineProjects/PhotoUjin/app/assets/stylesheets/pages.scss */
+.call-me {
+  height: 161px;
+  margin: 0 auto 140px;
+  overflow: hidden;
+  position: relative;
+  top: 15px;
+}
+/* line 200, /home/igor/RubymineProjects/PhotoUjin/app/assets/stylesheets/pages.scss */
+.call-me .call-text a p {
+  font-size: 40px;
+  position: relative;
+  top: 41px;
+}
+
+/* line 208, /home/igor/RubymineProjects/PhotoUjin/app/assets/stylesheets/pages.scss */
+.contact-information {
+  padding: 117px 0 78px 0;
+  text-align: center;
+  clear: both;
+}
+/* line 213, /home/igor/RubymineProjects/PhotoUjin/app/assets/stylesheets/pages.scss */
+.contact-information form .label-phone {
+  padding-bottom: 10px;
+}
+/* line 216, /home/igor/RubymineProjects/PhotoUjin/app/assets/stylesheets/pages.scss */
+.contact-information form .input-phone {
+  border: 3px dashed #000;
+  border-radius: 10px;
+  margin: 0 auto 10px;
+}
+/* line 220, /home/igor/RubymineProjects/PhotoUjin/app/assets/stylesheets/pages.scss */
+.contact-information form .input-phone input[type="text"] {
+  color: #585858;
+  display: inline-block;
+  font-size: 32px;
+  font-style: italic;
+  height: 58px;
+  margin-top: 6px;
+  margin-left: 6px;
+  margin-bottom: 10px;
+  margin-right: 6px;
+  padding-top: 6px;
+  padding-left: 6px;
+  padding-right: 6px;
+  width: 558px;
+  text-align: center;
+}
+/* line 243, /home/igor/RubymineProjects/PhotoUjin/app/assets/stylesheets/pages.scss */
+.contact-information form input[type="submit"] {
+  background-color: #ffa800;
+  border: 3px solid #585858;
+  border-radius: 5px;
+  color: #585858;
+  font-size: 26px;
+  height: 50px;
+  margin-bottom: 162px;
+  cursor: pointer;
+}
+/* line 255, /home/igor/RubymineProjects/PhotoUjin/app/assets/stylesheets/pages.scss */
+.contact-information .feedback-info li {
+  font-size: 32px;
+}
+/* line 259, /home/igor/RubymineProjects/PhotoUjin/app/assets/stylesheets/pages.scss */
+.contact-information .social {
+  margin-left: 105px;
+  margin-top: 25px;
+  overflow: hidden;
+}
+/* line 265, /home/igor/RubymineProjects/PhotoUjin/app/assets/stylesheets/pages.scss */
+.contact-information .social li {
+  display: inline;
+}
+
+/* line 270, /home/igor/RubymineProjects/PhotoUjin/app/assets/stylesheets/pages.scss */
+.question {
+  background-color: #FFA800;
+  text-align: center;
+  box-shadow: 0 7px 13px 0 #080808;
+}
+/* line 274, /home/igor/RubymineProjects/PhotoUjin/app/assets/stylesheets/pages.scss */
+.question form {
+  overflow: hidden;
+}
+/* line 276, /home/igor/RubymineProjects/PhotoUjin/app/assets/stylesheets/pages.scss */
+.question form .label-text {
+  font-family: "FuturaLight";
+  font-size: 56px;
+  color: #000;
+}
+/* line 283, /home/igor/RubymineProjects/PhotoUjin/app/assets/stylesheets/pages.scss */
+.question form textarea {
+  padding: 10px;
+  resize: none;
+}
+/* line 287, /home/igor/RubymineProjects/PhotoUjin/app/assets/stylesheets/pages.scss */
+.question form input[type="submit"] {
+  background-color: #ffa800;
+  border: 3px solid #585858;
+  border-radius: 5px;
+  bottom: -34px;
+  color: #585858;
+  cursor: pointer;
+  float: left;
+  left: 17px;
+  position: relative;
+  font-family: "FuturaLight";
+}
+/* line 301, /home/igor/RubymineProjects/PhotoUjin/app/assets/stylesheets/pages.scss */
+.question form input[type="text"] {
+  float: right;
+  margin-top: 9px;
+  padding-left: 5px;
+  font-family: 'MyriadProRegular';
+  color: #B0B0B0;
+  box-shadow: 0px -3px 17px 0 #808080 inset;
+}
+
+/* line 314, /home/igor/RubymineProjects/PhotoUjin/app/assets/stylesheets/pages.scss */
+.wrapper {
+  margin: 0 auto;
+}
+/* line 316, /home/igor/RubymineProjects/PhotoUjin/app/assets/stylesheets/pages.scss */
+.wrapper header {
+  padding-top: 20px;
+  background-image: url(http://res-3.cloudinary.com/dm1mh6uld/image/asset/background-header.fw-a707ff3913bdff57da5c641ebbb21f3c.png);
+  background-repeat: no-repeat;
+  background-position: 29px -41px;
+  overflow: hidden;
+  margin-right: 30px;
+}
+/* line 325, /home/igor/RubymineProjects/PhotoUjin/app/assets/stylesheets/pages.scss */
+.wrapper header h1 {
+  overflow: hidden;
+  text-align: center;
+  width: 163px;
+  height: 110px;
+  margin: auto;
+}
+/* line 332, /home/igor/RubymineProjects/PhotoUjin/app/assets/stylesheets/pages.scss */
+.wrapper header .nav-page-list {
+  height: 120px;
+  width: 100%;
+  margin: 15px 0;
+  display: table;
+}
+/* line 337, /home/igor/RubymineProjects/PhotoUjin/app/assets/stylesheets/pages.scss */
+.wrapper header .nav-page-list li {
+  display: table-cell;
+  vertical-align: middle;
+}
+/* line 340, /home/igor/RubymineProjects/PhotoUjin/app/assets/stylesheets/pages.scss */
+.wrapper header .nav-page-list li .nav-page {
+  display: inline-block;
+  margin: 0 auto;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  text-align: center;
+  font-size: 0;
+}
+/* line 349, /home/igor/RubymineProjects/PhotoUjin/app/assets/stylesheets/pages.scss */
+.wrapper header .nav-page-list li .nav-page li {
+  display: inline-block;
+  padding: 0 14px;
+}
+/* line 352, /home/igor/RubymineProjects/PhotoUjin/app/assets/stylesheets/pages.scss */
+.wrapper header .nav-page-list li .nav-page li a {
+  font-family: "FuturaLight";
+  color: #A8A8A8;
+  text-transform: uppercase;
+}
+/* line 362, /home/igor/RubymineProjects/PhotoUjin/app/assets/stylesheets/pages.scss */
+.wrapper header .nav-page-list li #nav-page3 li {
+  text-align: center;
+  width: 238px;
+}
+/* line 365, /home/igor/RubymineProjects/PhotoUjin/app/assets/stylesheets/pages.scss */
+.wrapper header .nav-page-list li #nav-page3 li:last-child {
+  width: 100px;
+}
+/* line 372, /home/igor/RubymineProjects/PhotoUjin/app/assets/stylesheets/pages.scss */
+.wrapper header .nav {
+  overflow: hidden;
+  margin-right: -10px;
+  margin-bottom: 40px;
+}
+/* line 378, /home/igor/RubymineProjects/PhotoUjin/app/assets/stylesheets/pages.scss */
+.wrapper header .nav li {
+  display: inline-block;
+  position: relative;
+  margin: 2px 10px 2px 2px;
+  border: 5px solid transparent;
+  z-index: 1;
+  cursor: pointer;
+}
+/* line 385, /home/igor/RubymineProjects/PhotoUjin/app/assets/stylesheets/pages.scss */
+.wrapper header .nav li:first-child {
+  background-image: url(http://res-1.cloudinary.com/dm1mh6uld/image/asset/background-arrow.fw-dfc78b7b6dec765ada7d7975cc24bdbf.png);
+  background-repeat: no-repeat;
+  background-position: 50% 100%;
+}
+/* line 392, /home/igor/RubymineProjects/PhotoUjin/app/assets/stylesheets/pages.scss */
+.wrapper header .nav li.photo1 {
+  background-image: url(http://res-5.cloudinary.com/dm1mh6uld/image/asset/e_grayscale/photomaking-color-bcbff0fed01558c2541f4040a9760570.png);
+  background-repeat: no-repeat;
+}
+/* line 395, /home/igor/RubymineProjects/PhotoUjin/app/assets/stylesheets/pages.scss */
+.wrapper header .nav li.photo1:hover {
+  background-image: url(http://res-5.cloudinary.com/dm1mh6uld/image/asset/photomaking-color-bcbff0fed01558c2541f4040a9760570.png);
+  background-repeat: no-repeat;
+}
+/* line 402, /home/igor/RubymineProjects/PhotoUjin/app/assets/stylesheets/pages.scss */
+.wrapper header .nav li.photo1-active {
+  background-image: url(http://res-5.cloudinary.com/dm1mh6uld/image/asset/photomaking-color-bcbff0fed01558c2541f4040a9760570.png);
+  background-repeat: no-repeat;
+  border: 5px solid #FFA800;
+}
+/* line 409, /home/igor/RubymineProjects/PhotoUjin/app/assets/stylesheets/pages.scss */
+.wrapper header .nav li.photo2 {
+  background-image: url(http://res-4.cloudinary.com/dm1mh6uld/image/asset/e_grayscale/polygraphy-color-9dbf9546451fab78f294f753fc528304.png);
+  background-repeat: no-repeat;
+}
+/* line 412, /home/igor/RubymineProjects/PhotoUjin/app/assets/stylesheets/pages.scss */
+.wrapper header .nav li.photo2:hover {
+  background-image: url(http://res-4.cloudinary.com/dm1mh6uld/image/asset/polygraphy-color-9dbf9546451fab78f294f753fc528304.png);
+  background-repeat: no-repeat;
+}
+/* line 419, /home/igor/RubymineProjects/PhotoUjin/app/assets/stylesheets/pages.scss */
+.wrapper header .nav li.photo2-active {
+  background-image: url(http://res-4.cloudinary.com/dm1mh6uld/image/asset/polygraphy-color-9dbf9546451fab78f294f753fc528304.png);
+  background-repeat: no-repeat;
+  border: 5px solid #FFA800;
+}
+/* line 426, /home/igor/RubymineProjects/PhotoUjin/app/assets/stylesheets/pages.scss */
+.wrapper header .nav li.photo3 {
+  background-image: url(http://res-1.cloudinary.com/dm1mh6uld/image/asset/e_grayscale/photobook-color-515da2cf7b4b06bb85e4fce661a9b2f9.png);
+  background-repeat: no-repeat;
+}
+/* line 429, /home/igor/RubymineProjects/PhotoUjin/app/assets/stylesheets/pages.scss */
+.wrapper header .nav li.photo3:hover {
+  background-image: url(http://res-1.cloudinary.com/dm1mh6uld/image/asset/photobook-color-515da2cf7b4b06bb85e4fce661a9b2f9.png);
+  background-repeat: no-repeat;
+}
+/* line 436, /home/igor/RubymineProjects/PhotoUjin/app/assets/stylesheets/pages.scss */
+.wrapper header .nav li.photo3-active {
+  background-image: url(http://res-1.cloudinary.com/dm1mh6uld/image/asset/photobook-color-515da2cf7b4b06bb85e4fce661a9b2f9.png);
+  background-repeat: no-repeat;
+  border: 5px solid #FFA800;
+}
+/* line 446, /home/igor/RubymineProjects/PhotoUjin/app/assets/stylesheets/pages.scss */
+.wrapper header .information ul {
+  overflow: hidden;
+  background-color: #FFA800;
+  padding-bottom: 23px;
+}
+/* line 452, /home/igor/RubymineProjects/PhotoUjin/app/assets/stylesheets/pages.scss */
+.wrapper header .information ul li {
+  float: left;
+  padding-top: 24px;
+  font-family: Arial;
+  color: #535353;
+}
+/* line 464, /home/igor/RubymineProjects/PhotoUjin/app/assets/stylesheets/pages.scss */
+.wrapper .content .subject-matter {
+  background-color: #585858;
+  padding: 70px 0;
+  box-shadow: -3px 17px 24px -15px #000000 inset;
+}
+/* line 468, /home/igor/RubymineProjects/PhotoUjin/app/assets/stylesheets/pages.scss */
+.wrapper .content .subject-matter p {
+  color: #fff;
+  margin: 0 auto;
+  text-align: center;
+}
+/* line 475, /home/igor/RubymineProjects/PhotoUjin/app/assets/stylesheets/pages.scss */
+.wrapper .content .slider .ca-container {
+  position: relative;
+  width: 1024px;
+  height: 450px;
+  border-bottom: 10px solid #FFA800;
+}
+/* line 480, /home/igor/RubymineProjects/PhotoUjin/app/assets/stylesheets/pages.scss */
+.wrapper .content .slider .ca-container .ca-item {
+  position: relative;
+  float: left;
+  height: 100%;
+  text-align: center;
+}
+/* line 485, /home/igor/RubymineProjects/PhotoUjin/app/assets/stylesheets/pages.scss */
+.wrapper .content .slider .ca-container .ca-item img {
+  height: inherit;
+}
+/* line 491, /home/igor/RubymineProjects/PhotoUjin/app/assets/stylesheets/pages.scss */
+.wrapper .content .price {
+  background-color: #DADADA;
+  width: 100%;
+  padding-top: 54px;
+  box-shadow: -3px 17px 24px -15px #000000 inset;
+}
+/* line 496, /home/igor/RubymineProjects/PhotoUjin/app/assets/stylesheets/pages.scss */
+.wrapper .content .price h3 {
+  font-weight: normal;
+  text-align: center;
+  margin-bottom: 30px;
+}
+/* line 503, /home/igor/RubymineProjects/PhotoUjin/app/assets/stylesheets/pages.scss */
+.wrapper .content .price .price-list {
+  overflow: hidden;
+}
+/* line 505, /home/igor/RubymineProjects/PhotoUjin/app/assets/stylesheets/pages.scss */
+.wrapper .content .price .price-list li {
+  border: 2px solid #C9C9C9;
+  background-color: #EFEBE5;
+}
+/* line 508, /home/igor/RubymineProjects/PhotoUjin/app/assets/stylesheets/pages.scss */
+.wrapper .content .price .price-list li:first-child {
+  background-color: #E6EFE5;
+}
+/* line 511, /home/igor/RubymineProjects/PhotoUjin/app/assets/stylesheets/pages.scss */
+.wrapper .content .price .price-list li:last-child {
+  background-color: #EFE5E5;
+}
+/* line 514, /home/igor/RubymineProjects/PhotoUjin/app/assets/stylesheets/pages.scss */
+.wrapper .content .price .price-list li h4 {
+  color: #000;
+  float: left;
+  font-weight: normal;
+  position: relative;
+  top: 74px;
+  padding-right: 24px;
+  padding-left: 24px;
+}
+/* line 526, /home/igor/RubymineProjects/PhotoUjin/app/assets/stylesheets/pages.scss */
+.wrapper .content .price .price-list li h4:nth-child(2) {
+  padding-top: 25px;
+}
+/* line 530, /home/igor/RubymineProjects/PhotoUjin/app/assets/stylesheets/pages.scss */
+.wrapper .content .price .price-list li .description {
+  overflow: hidden;
+}
+/* line 532, /home/igor/RubymineProjects/PhotoUjin/app/assets/stylesheets/pages.scss */
+.wrapper .content .price .price-list li .description li {
+  border: none;
+  margin: 0;
+  background-color: transparent;
+  font-size: 25px;
+}
+/* line 537, /home/igor/RubymineProjects/PhotoUjin/app/assets/stylesheets/pages.scss */
+.wrapper .content .price .price-list li .description li:first-child {
+  background-color: transparent;
+}
+/* line 540, /home/igor/RubymineProjects/PhotoUjin/app/assets/stylesheets/pages.scss */
+.wrapper .content .price .price-list li .description li:last-child {
+  color: #000;
+  background-color: transparent;
+}
+/* line 548, /home/igor/RubymineProjects/PhotoUjin/app/assets/stylesheets/pages.scss */
+.wrapper .content .price .more-information {
+  padding-bottom: 26px;
+}
+/* line 550, /home/igor/RubymineProjects/PhotoUjin/app/assets/stylesheets/pages.scss */
+.wrapper .content .price .more-information li {
+  text-align: center;
+  color: #000;
+}
+/* line 556, /home/igor/RubymineProjects/PhotoUjin/app/assets/stylesheets/pages.scss */
+.wrapper .content .conditions {
+  background-color: #585858;
+  color: #fff;
+  border-bottom: 25px solid #FFA800;
+  box-shadow: 0 -7px 14px -4px #000;
+}
+/* line 561, /home/igor/RubymineProjects/PhotoUjin/app/assets/stylesheets/pages.scss */
+.wrapper .content .conditions li {
+  background-image: url(http://res-4.cloudinary.com/dm1mh6uld/image/asset/marker.fw-e0df56c14627ddfca8545c8fb86dcbc0.png), url(http://res-3.cloudinary.com/dm1mh6uld/image/asset/grey-marker.fw-a2fb4a52cc836eb5dd23234cd79e2b4b.png);
+  background-repeat: no-repeat, no-repeat;
+  background-position: 0 8px, 100% 12px;
+  overflow: hidden;
+  padding-left: 25px;
+}
+/* line 572, /home/igor/RubymineProjects/PhotoUjin/app/assets/stylesheets/pages.scss */
+.wrapper .content .page2 h2 {
+  font-family: 'a_AvanteBsNr Light', Arial;
+  font-size: 44px;
+  text-align: center;
+  margin: 45px 0 30px 0;
+  text-transform: uppercase;
+}
+/* line 581, /home/igor/RubymineProjects/PhotoUjin/app/assets/stylesheets/pages.scss */
+.wrapper .content .page2 .indent {
+  background-color: #585858;
+  height: 57px;
+  box-shadow: 0 10px 10px -9px #000000 inset, 0px -10px 10px -9px #000000 inset;
+}
+/* line 586, /home/igor/RubymineProjects/PhotoUjin/app/assets/stylesheets/pages.scss */
+.wrapper .content .page2 .invitation {
+  overflow: hidden;
+}
+/* line 588, /home/igor/RubymineProjects/PhotoUjin/app/assets/stylesheets/pages.scss */
+.wrapper .content .page2 .invitation li {
+  color: #585858;
+  float: left;
+  padding-right: 10px;
+  text-align: center;
+}
+/* line 593, /home/igor/RubymineProjects/PhotoUjin/app/assets/stylesheets/pages.scss */
+.wrapper .content .page2 .invitation li span {
+  text-transform: uppercase;
+}
+/* line 596, /home/igor/RubymineProjects/PhotoUjin/app/assets/stylesheets/pages.scss */
+.wrapper .content .page2 .invitation li img[alt="mini"] {
+  padding-left: 10px;
+}
+/* line 601, /home/igor/RubymineProjects/PhotoUjin/app/assets/stylesheets/pages.scss */
+.wrapper .content .page2 .big-list-photo {
+  margin-top: 20px;
+  overflow: hidden;
+}
+/* line 604, /home/igor/RubymineProjects/PhotoUjin/app/assets/stylesheets/pages.scss */
+.wrapper .content .page2 .big-list-photo li {
+  float: left;
+  margin: 0 4px 2px 12px;
+}
+/* line 608, /home/igor/RubymineProjects/PhotoUjin/app/assets/stylesheets/pages.scss */
+.wrapper .content .page2 .big-list-photo li a .photo_bike:hover {
+  content: url(http://res-3.cloudinary.com/dm1mh6uld/image/asset/color-list-photo-bikes-9e57729d681765b476c8d7577109198e.png);
+}
+/* line 611, /home/igor/RubymineProjects/PhotoUjin/app/assets/stylesheets/pages.scss */
+.wrapper .content .page2 .big-list-photo li a .photo_single:hover {
+  content: url(http://res-2.cloudinary.com/dm1mh6uld/image/asset/color-list-photo-single-829a44f4f251c37d531506b12bf81e9e.png);
+}
+/* line 614, /home/igor/RubymineProjects/PhotoUjin/app/assets/stylesheets/pages.scss */
+.wrapper .content .page2 .big-list-photo li a .photo_butterfly:hover {
+  content: url(http://res-2.cloudinary.com/dm1mh6uld/image/asset/color-list-photo-butterfly-2f6f1eab7a7fcf5f77b982217c9d7a42.png);
+}
+/* line 617, /home/igor/RubymineProjects/PhotoUjin/app/assets/stylesheets/pages.scss */
+.wrapper .content .page2 .big-list-photo li a .photo_passport:hover {
+  content: url(http://res-5.cloudinary.com/dm1mh6uld/image/asset/color-list-photo-passport-61ecfbcaaa31fe3e2b71d2999980f293.png);
+}
+/* line 620, /home/igor/RubymineProjects/PhotoUjin/app/assets/stylesheets/pages.scss */
+.wrapper .content .page2 .big-list-photo li a .photo_cards:hover {
+  content: url(http://res-1.cloudinary.com/dm1mh6uld/image/asset/color-list-photo-cards-dd0b7bb034cb7553109d325fc5cf746e.png);
+}
+/* line 626, /home/igor/RubymineProjects/PhotoUjin/app/assets/stylesheets/pages.scss */
+.wrapper .content .page2 .invitation-thems {
+  background-color: #585858;
+  padding: 37px 24px 72px 24px;
+  font-size: 24px;
+  color: #fff;
+  text-align: center;
+  box-shadow: 0px -10px 15px -9px #000000 inset;
+}
+/* line 634, /home/igor/RubymineProjects/PhotoUjin/app/assets/stylesheets/pages.scss */
+.wrapper .content .page2 .two-big-photo {
+  overflow: hidden;
+}
+/* line 636, /home/igor/RubymineProjects/PhotoUjin/app/assets/stylesheets/pages.scss */
+.wrapper .content .page2 .two-big-photo img {
+  float: left;
+}
+/* line 640, /home/igor/RubymineProjects/PhotoUjin/app/assets/stylesheets/pages.scss */
+.wrapper .content .page2 .commentary {
+  margin: 23px 0;
+  text-align: center;
+  font-size: 22px;
+}
+/* line 645, /home/igor/RubymineProjects/PhotoUjin/app/assets/stylesheets/pages.scss */
+.wrapper .content .page2 .table {
+  background-color: #585858;
+  padding-top: 22px;
+}
+/* line 648, /home/igor/RubymineProjects/PhotoUjin/app/assets/stylesheets/pages.scss */
+.wrapper .content .page2 .table table {
+  margin-left: 121px;
+}
+/* line 650, /home/igor/RubymineProjects/PhotoUjin/app/assets/stylesheets/pages.scss */
+.wrapper .content .page2 .table table td {
+  color: #fff;
+}
+/* line 652, /home/igor/RubymineProjects/PhotoUjin/app/assets/stylesheets/pages.scss */
+.wrapper .content .page2 .table table td.quantity {
+  width: 120px;
+  line-height: 43%;
+  text-align: center;
+}
+/* line 656, /home/igor/RubymineProjects/PhotoUjin/app/assets/stylesheets/pages.scss */
+.wrapper .content .page2 .table table td.quantity span {
+  font-size: 20px;
+  text-align: center;
+  width: 120px;
+}
+/* line 662, /home/igor/RubymineProjects/PhotoUjin/app/assets/stylesheets/pages.scss */
+.wrapper .content .page2 .table table td.cost {
+  font-size: 28px;
+}
+/* line 667, /home/igor/RubymineProjects/PhotoUjin/app/assets/stylesheets/pages.scss */
+.wrapper .content .page2 .table .commentary2 {
+  text-align: center;
+  font-size: 21px;
+  position: relative;
+  bottom: 60px;
+  color: #fff;
+  margin-top: 40px;
+  margin-bottom: 10px;
+}
+/* line 681, /home/igor/RubymineProjects/PhotoUjin/app/assets/stylesheets/pages.scss */
+.wrapper .content .page3 .book-list {
+  overflow: hidden;
+}
+/* line 683, /home/igor/RubymineProjects/PhotoUjin/app/assets/stylesheets/pages.scss */
+.wrapper .content .page3 .book-list li {
+  overflow: hidden;
+}
+/* line 685, /home/igor/RubymineProjects/PhotoUjin/app/assets/stylesheets/pages.scss */
+.wrapper .content .page3 .book-list li h2 {
+  font-family: 'a_AvanteBsNr Light', Arial;
+  font-size: 44px;
+  text-align: center;
+  margin: 45px 0 30px 0;
+  text-transform: uppercase;
+}
+/* line 694, /home/igor/RubymineProjects/PhotoUjin/app/assets/stylesheets/pages.scss */
+.wrapper .content .page3 .book-list li .photo-gallery-wrapp {
+  float: left;
+}
+/* line 696, /home/igor/RubymineProjects/PhotoUjin/app/assets/stylesheets/pages.scss */
+.wrapper .content .page3 .book-list li .photo-gallery-wrapp img {
+  width: 501px;
+  height: 343px;
+}
+/* line 700, /home/igor/RubymineProjects/PhotoUjin/app/assets/stylesheets/pages.scss */
+.wrapper .content .page3 .book-list li .photo-gallery-wrapp ul {
+  overflow: hidden;
+  margin-top: 31px;
+  text-align: center;
+}
+/* line 704, /home/igor/RubymineProjects/PhotoUjin/app/assets/stylesheets/pages.scss */
+.wrapper .content .page3 .book-list li .photo-gallery-wrapp ul li {
+  overflow: hidden;
+  float: left;
+  margin-right: 10px;
+  margin-top: 30px;
+}
+/* line 709, /home/igor/RubymineProjects/PhotoUjin/app/assets/stylesheets/pages.scss */
+.wrapper .content .page3 .book-list li .photo-gallery-wrapp ul li img {
+  width: 110px;
+  height: 74px;
+  cursor: pointer;
+}
+/* line 717, /home/igor/RubymineProjects/PhotoUjin/app/assets/stylesheets/pages.scss */
+.wrapper .content .page3 .book-list li .info-wrapp {
+  background-color: #585858;
+  color: #fff;
+  overflow: hidden;
+  font-size: 22px;
+}
+/* line 722, /home/igor/RubymineProjects/PhotoUjin/app/assets/stylesheets/pages.scss */
+.wrapper .content .page3 .book-list li .info-wrapp .info-size {
+  background-color: #fff;
+  color: #000;
+  overflow: hidden;
+  text-align: center;
+  min-height: 100px;
+}
+/* line 728, /home/igor/RubymineProjects/PhotoUjin/app/assets/stylesheets/pages.scss */
+.wrapper .content .page3 .book-list li .info-wrapp .info-size p {
+  line-height: 173%;
+  padding-top: 25px;
+  color: #585858;
+}
+/* line 734, /home/igor/RubymineProjects/PhotoUjin/app/assets/stylesheets/pages.scss */
+.wrapper .content .page3 .book-list li .info-wrapp dl {
+  padding: 20px 10px 25px 10px;
+}
+/* line 736, /home/igor/RubymineProjects/PhotoUjin/app/assets/stylesheets/pages.scss */
+.wrapper .content .page3 .book-list li .info-wrapp dl dt {
+  float: left;
+}
+/* line 740, /home/igor/RubymineProjects/PhotoUjin/app/assets/stylesheets/pages.scss */
+.wrapper .content .page3 .book-list li .info-wrapp .special-info {
+  margin-left: 10px;
+  padding-bottom: 25px;
+}
+/* line 749, /home/igor/RubymineProjects/PhotoUjin/app/assets/stylesheets/pages.scss */
+.wrapper footer {
+  background-color: #585858;
+  padding: 34px 8px 8px 8px;
+  overflow: hidden;
+}
+/* line 753, /home/igor/RubymineProjects/PhotoUjin/app/assets/stylesheets/pages.scss */
+.wrapper footer p {
+  float: right;
+  color: #dadada;
+  font-family: 'MyriadProRegular';
+  font-size: 19px;
+}
+/* line 760, /home/igor/RubymineProjects/PhotoUjin/app/assets/stylesheets/pages.scss */
+.wrapper footer p a {
+  color: #dadada !important;
+  font-family: 'MyriadProRegular' !important;
+  font-size: 19px !important;
+  text-decoration: underline !important;
+}
+/* ------------------------------------------ */
+/* -----------responsive by (460px)---------- */
+/* ------------------------------------------ */
+@media only screen and (min-width: 460px) {
+  /* line 6, /home/igor/RubymineProjects/PhotoUjin/app/assets/stylesheets/responsive.scss */
+  .wrapper {
+    width: 460px;
+    min-width: 0;
+  }
+  /* line 9, /home/igor/RubymineProjects/PhotoUjin/app/assets/stylesheets/responsive.scss */
+  .wrapper header {
+    width: 460px;
+    background-position: -172px -41px;
+  }
+  /* line 12, /home/igor/RubymineProjects/PhotoUjin/app/assets/stylesheets/responsive.scss */
+  .wrapper header .nav-page-list {
+    margin-bottom: 15px;
+  }
+  /* line 15, /home/igor/RubymineProjects/PhotoUjin/app/assets/stylesheets/responsive.scss */
+  .wrapper header .nav-page-list li .nav-page {
+    text-align: center;
+  }
+  /* line 17, /home/igor/RubymineProjects/PhotoUjin/app/assets/stylesheets/responsive.scss */
+  .wrapper header .nav-page-list li .nav-page li {
+    display: inline-block;
+    padding: 0 10px;
+  }
+  /* line 20, /home/igor/RubymineProjects/PhotoUjin/app/assets/stylesheets/responsive.scss */
+  .wrapper header .nav-page-list li .nav-page li a {
+    font-size: 16px;
+  }
+  /* line 26, /home/igor/RubymineProjects/PhotoUjin/app/assets/stylesheets/responsive.scss */
+  .wrapper header .nav-page-list li #nav-page1 li {
+    padding-right: 25px;
+  }
+  /* line 31, /home/igor/RubymineProjects/PhotoUjin/app/assets/stylesheets/responsive.scss */
+  .wrapper header .nav-page-list li #nav-page2 li {
+    padding-right: 15px;
+  }
+  /* line 35, /home/igor/RubymineProjects/PhotoUjin/app/assets/stylesheets/responsive.scss */
+  .wrapper header .nav-page-list li #nav-page3 {
+    width: 460px;
+  }
+  /* line 37, /home/igor/RubymineProjects/PhotoUjin/app/assets/stylesheets/responsive.scss */
+  .wrapper header .nav-page-list li #nav-page3 li {
+    width: 93px;
+  }
+  /* line 43, /home/igor/RubymineProjects/PhotoUjin/app/assets/stylesheets/responsive.scss */
+  .wrapper header .nav {
+    margin-left: 0;
+  }
+  /* line 45, /home/igor/RubymineProjects/PhotoUjin/app/assets/stylesheets/responsive.scss */
+  .wrapper header .nav li {
+    margin-right: -4px;
+    width: 140px;
+    height: 210px;
+  }
+  /* line 49, /home/igor/RubymineProjects/PhotoUjin/app/assets/stylesheets/responsive.scss */
+  .wrapper header .nav li.photo1 {
+    background-size: 140px auto;
+  }
+  /* line 51, /home/igor/RubymineProjects/PhotoUjin/app/assets/stylesheets/responsive.scss */
+  .wrapper header .nav li.photo1:hover {
+    background-size: 140px auto;
+  }
+  /* line 55, /home/igor/RubymineProjects/PhotoUjin/app/assets/stylesheets/responsive.scss */
+  .wrapper header .nav li.photo1-active {
+    background-size: 140px auto;
+  }
+  /* line 58, /home/igor/RubymineProjects/PhotoUjin/app/assets/stylesheets/responsive.scss */
+  .wrapper header .nav li.photo2 {
+    background-size: 140px auto;
+  }
+  /* line 60, /home/igor/RubymineProjects/PhotoUjin/app/assets/stylesheets/responsive.scss */
+  .wrapper header .nav li.photo2:hover {
+    background-size: 140px auto;
+  }
+  /* line 64, /home/igor/RubymineProjects/PhotoUjin/app/assets/stylesheets/responsive.scss */
+  .wrapper header .nav li.photo2-active {
+    background-size: 140px auto;
+  }
+  /* line 67, /home/igor/RubymineProjects/PhotoUjin/app/assets/stylesheets/responsive.scss */
+  .wrapper header .nav li.photo3 {
+    background-size: 140px auto;
+  }
+  /* line 69, /home/igor/RubymineProjects/PhotoUjin/app/assets/stylesheets/responsive.scss */
+  .wrapper header .nav li.photo3:hover {
+    background-size: 140px auto;
+  }
+  /* line 73, /home/igor/RubymineProjects/PhotoUjin/app/assets/stylesheets/responsive.scss */
+  .wrapper header .nav li.photo3-active {
+    background-size: 140px auto;
+  }
+  /* line 79, /home/igor/RubymineProjects/PhotoUjin/app/assets/stylesheets/responsive.scss */
+  .wrapper header .information ul {
+    padding-left: 13px;
+  }
+  /* line 81, /home/igor/RubymineProjects/PhotoUjin/app/assets/stylesheets/responsive.scss */
+  .wrapper header .information ul li {
+    font-size: 14px;
+    margin-right: 0;
+    width: 148px;
+  }
+  /* line 89, /home/igor/RubymineProjects/PhotoUjin/app/assets/stylesheets/responsive.scss */
+  .wrapper .content {
+    width: 460px;
+  }
+  /* line 91, /home/igor/RubymineProjects/PhotoUjin/app/assets/stylesheets/responsive.scss */
+  .wrapper .content .subject-matter {
+    width: 460px;
+  }
+  /* line 93, /home/igor/RubymineProjects/PhotoUjin/app/assets/stylesheets/responsive.scss */
+  .wrapper .content .subject-matter p {
+    color: #fff;
+    font-size: 17px;
+    width: 460px;
+    margin: 0 auto;
+    text-align: center;
+  }
+  /* line 103, /home/igor/RubymineProjects/PhotoUjin/app/assets/stylesheets/responsive.scss */
+  .wrapper .content .ui-tabs .ui-tabs-nav li {
+    height: 50px;
+  }
+  /* line 105, /home/igor/RubymineProjects/PhotoUjin/app/assets/stylesheets/responsive.scss */
+  .wrapper .content .ui-tabs .ui-tabs-nav li a {
+    font-size: 11px;
+    font-family: 'MyriadProRegular';
+    padding: 11px 6px;
+  }
+  /* line 114, /home/igor/RubymineProjects/PhotoUjin/app/assets/stylesheets/responsive.scss */
+  .wrapper .content .ui-tabs .ca-container {
+    width: 460px;
+  }
+  /* line 119, /home/igor/RubymineProjects/PhotoUjin/app/assets/stylesheets/responsive.scss */
+  .wrapper .content .price h3 {
+    font-size: 23px;
+    font-weight: normal;
+    margin-bottom: 30px;
+    text-align: center;
+  }
+  /* line 128, /home/igor/RubymineProjects/PhotoUjin/app/assets/stylesheets/responsive.scss */
+  .wrapper .content .price .price-list li {
+    margin: 0 10px 5px;
+  }
+  /* line 130, /home/igor/RubymineProjects/PhotoUjin/app/assets/stylesheets/responsive.scss */
+  .wrapper .content .price .price-list li h4 {
+    font-size: 24px;
+    padding-left: 15px;
+    padding-right: 15px;
+  }
+  /* line 137, /home/igor/RubymineProjects/PhotoUjin/app/assets/stylesheets/responsive.scss */
+  .wrapper .content .price .price-list li .description {
+    margin: 10px 25px 10px 40px;
+  }
+  /* line 139, /home/igor/RubymineProjects/PhotoUjin/app/assets/stylesheets/responsive.scss */
+  .wrapper .content .price .price-list li .description li {
+    font-size: 19px;
+  }
+  /* line 146, /home/igor/RubymineProjects/PhotoUjin/app/assets/stylesheets/responsive.scss */
+  .wrapper .content .price .more-information li {
+    font-size: 18px;
+  }
+  /* line 151, /home/igor/RubymineProjects/PhotoUjin/app/assets/stylesheets/responsive.scss */
+  .wrapper .content .conditions {
+    padding: 45px 18px 34px 23px;
+  }
+  /* line 153, /home/igor/RubymineProjects/PhotoUjin/app/assets/stylesheets/responsive.scss */
+  .wrapper .content .conditions li {
+    background-image: url(http://res-4.cloudinary.com/dm1mh6uld/image/asset/marker.fw-e0df56c14627ddfca8545c8fb86dcbc0.png), url(http://res-3.cloudinary.com/dm1mh6uld/image/asset/grey-marker.fw-a2fb4a52cc836eb5dd23234cd79e2b4b.png);
+    background-repeat: no-repeat, no-repeat;
+    background-position: 0 2px, 100% 3px;
+    font-size: 20px;
+  }
+  /* line 163, /home/igor/RubymineProjects/PhotoUjin/app/assets/stylesheets/responsive.scss */
+  .wrapper .content .page2 h2 {
+    font-size: 26px;
+    font-weight: normal;
+  }
+  /* line 170, /home/igor/RubymineProjects/PhotoUjin/app/assets/stylesheets/responsive.scss */
+  .wrapper .content .page2 .invitation li {
+    width: 17%;
+    font-size: 15px;
+  }
+  /* line 173, /home/igor/RubymineProjects/PhotoUjin/app/assets/stylesheets/responsive.scss */
+  .wrapper .content .page2 .invitation li img {
+    width: 100%;
+  }
+  /* line 179, /home/igor/RubymineProjects/PhotoUjin/app/assets/stylesheets/responsive.scss */
+  .wrapper .content .page2 .big-list-photo li {
+    width: 29%;
+    height: auto;
+  }
+  /* line 182, /home/igor/RubymineProjects/PhotoUjin/app/assets/stylesheets/responsive.scss */
+  .wrapper .content .page2 .big-list-photo li:nth-child(4) {
+    width: 48%;
+  }
+  /* line 185, /home/igor/RubymineProjects/PhotoUjin/app/assets/stylesheets/responsive.scss */
+  .wrapper .content .page2 .big-list-photo li:last-child {
+    width: 45%;
+  }
+  /* line 188, /home/igor/RubymineProjects/PhotoUjin/app/assets/stylesheets/responsive.scss */
+  .wrapper .content .page2 .big-list-photo li img {
+    width: 100%;
+    height: 157px;
+  }
+  /* line 194, /home/igor/RubymineProjects/PhotoUjin/app/assets/stylesheets/responsive.scss */
+  .wrapper .content .page2 .invitation-thems {
+    font-size: 19px;
+  }
+  /* line 198, /home/igor/RubymineProjects/PhotoUjin/app/assets/stylesheets/responsive.scss */
+  .wrapper .content .page2 .two-big-photo img {
+    width: 50%;
+    height: 200px;
+  }
+  /* line 203, /home/igor/RubymineProjects/PhotoUjin/app/assets/stylesheets/responsive.scss */
+  .wrapper .content .page2 .commentary {
+    font-size: 17px;
+  }
+  /* line 207, /home/igor/RubymineProjects/PhotoUjin/app/assets/stylesheets/responsive.scss */
+  .wrapper .content .page2 .table table {
+    margin-left: 20px;
+  }
+  /* line 209, /home/igor/RubymineProjects/PhotoUjin/app/assets/stylesheets/responsive.scss */
+  .wrapper .content .page2 .table table td {
+    padding-bottom: 22px;
+  }
+  /* line 211, /home/igor/RubymineProjects/PhotoUjin/app/assets/stylesheets/responsive.scss */
+  .wrapper .content .page2 .table table td.name {
+    width: 173px;
+    font-size: 15px;
+    padding-right: 15px;
+  }
+  /* line 216, /home/igor/RubymineProjects/PhotoUjin/app/assets/stylesheets/responsive.scss */
+  .wrapper .content .page2 .table table td.quantity {
+    font-size: 35px;
+    line-height: 43%;
+    padding-right: 20px;
+    width: 120px;
+    text-align: center;
+    color: #fff;
+  }
+  /* line 224, /home/igor/RubymineProjects/PhotoUjin/app/assets/stylesheets/responsive.scss */
+  .wrapper .content .page2 .table table td.cost {
+    font-size: 23px;
+  }
+  /* line 229, /home/igor/RubymineProjects/PhotoUjin/app/assets/stylesheets/responsive.scss */
+  .wrapper .content .page2 .table .commentary2 {
+    bottom: 52px;
+    font-size: 15px;
+  }
+  /* line 237, /home/igor/RubymineProjects/PhotoUjin/app/assets/stylesheets/responsive.scss */
+  .wrapper .content .page3 .book-list li {
+    text-align: center;
+    overflow: hidden;
+  }
+  /* line 240, /home/igor/RubymineProjects/PhotoUjin/app/assets/stylesheets/responsive.scss */
+  .wrapper .content .page3 .book-list li h2 {
+    font-size: 26px;
+    font-weight: normal;
+  }
+  /* line 246, /home/igor/RubymineProjects/PhotoUjin/app/assets/stylesheets/responsive.scss */
+  .wrapper .content .page3 .book-list li .layflat {
+    text-transform: capitalize;
+  }
+  /* line 249, /home/igor/RubymineProjects/PhotoUjin/app/assets/stylesheets/responsive.scss */
+  .wrapper .content .page3 .book-list li .photo-gallery-wrapp {
+    float: none;
+  }
+  /* line 252, /home/igor/RubymineProjects/PhotoUjin/app/assets/stylesheets/responsive.scss */
+  .wrapper .content .page3 .book-list li .info-wrapp {
+    text-align: left;
+  }
+  /* line 259, /home/igor/RubymineProjects/PhotoUjin/app/assets/stylesheets/responsive.scss */
+  .wrapper .message {
+    text-align: center;
+  }
+  /* line 261, /home/igor/RubymineProjects/PhotoUjin/app/assets/stylesheets/responsive.scss */
+  .wrapper .message li {
+    display: inline-block;
+    margin: 0 14px;
+    height: 104px;
+  }
+  /* line 265, /home/igor/RubymineProjects/PhotoUjin/app/assets/stylesheets/responsive.scss */
+  .wrapper .message li a {
+    overflow: hidden;
+    display: block;
+    text-indent: -400px;
+    background-image: url(http://res-2.cloudinary.com/dm1mh6uld/image/asset/background-link.fw-a402f887dfde5f98086d1a22339c5e23.png);
+    background-repeat: no-repeat;
+  }
+  /* line 273, /home/igor/RubymineProjects/PhotoUjin/app/assets/stylesheets/responsive.scss */
+  .wrapper .message li a p {
+    font-size: 15px;
+    left: 135px;
+  }
+  /* line 279, /home/igor/RubymineProjects/PhotoUjin/app/assets/stylesheets/responsive.scss */
+  .wrapper .message li.big-message a {
+    background-size: 417px auto;
+    background-position: 0 0;
+    height: 109px;
+    width: 294px;
+  }
+  /* line 286, /home/igor/RubymineProjects/PhotoUjin/app/assets/stylesheets/responsive.scss */
+  .wrapper .message li.big-message a p {
+    top: 23px;
+    left: 127px;
+  }
+  /* line 289, /home/igor/RubymineProjects/PhotoUjin/app/assets/stylesheets/responsive.scss */
+  .wrapper .message li.big-message a p span {
+    font-weight: bold;
+    font-size: 18px;
+  }
+  /* line 297, /home/igor/RubymineProjects/PhotoUjin/app/assets/stylesheets/responsive.scss */
+  .wrapper .message li.small-message a {
+    background-size: 400px auto;
+    background-position: -303px 0;
+    height: 110px;
+    width: 105px;
+  }
+  /* line 304, /home/igor/RubymineProjects/PhotoUjin/app/assets/stylesheets/responsive.scss */
+  .wrapper .message li.small-message a p {
+    font-size: 25px;
+  }
+  /* line 311, /home/igor/RubymineProjects/PhotoUjin/app/assets/stylesheets/responsive.scss */
+  .wrapper .message li.small-text a p {
+    font-size: 25px;
+  }
+  /* line 318, /home/igor/RubymineProjects/PhotoUjin/app/assets/stylesheets/responsive.scss */
+  .wrapper .call-me {
+    height: 231px;
+    margin: 0 auto 0;
+    width: 459px;
+  }
+  /* line 323, /home/igor/RubymineProjects/PhotoUjin/app/assets/stylesheets/responsive.scss */
+  .wrapper .call-me .call-text p {
+    font-size: 22px;
+    top: 34px;
+  }
+  /* line 330, /home/igor/RubymineProjects/PhotoUjin/app/assets/stylesheets/responsive.scss */
+  .wrapper .contact-information .label-phone {
+    font-size: 23px;
+  }
+  /* line 333, /home/igor/RubymineProjects/PhotoUjin/app/assets/stylesheets/responsive.scss */
+  .wrapper .contact-information .input-phone {
+    border: 3px dashed #000;
+    border-radius: 10px;
+    margin: 0 auto 10px;
+    width: 410px;
+  }
+  /* line 338, /home/igor/RubymineProjects/PhotoUjin/app/assets/stylesheets/responsive.scss */
+  .wrapper .contact-information .input-phone input[type="text"] {
+    width: 378px;
+  }
+  /* line 342, /home/igor/RubymineProjects/PhotoUjin/app/assets/stylesheets/responsive.scss */
+  .wrapper .contact-information input[type="submit"] {
+    background-color: #ffa800;
+    border: 3px solid #585858;
+    border-radius: 5px;
+    color: #585858;
+    cursor: pointer;
+    font-size: 26px;
+    height: 50px;
+    margin-bottom: 162px;
+    width: 299px;
+  }
+  /* line 353, /home/igor/RubymineProjects/PhotoUjin/app/assets/stylesheets/responsive.scss */
+  .wrapper .contact-information .social {
+    margin-top: 25px;
+    overflow: hidden;
+    margin-left: 0;
+    margin-right: 10px;
+  }
+  /* line 360, /home/igor/RubymineProjects/PhotoUjin/app/assets/stylesheets/responsive.scss */
+  .wrapper .contact-information .social li {
+    margin-right: 25px;
+  }
+  /* line 362, /home/igor/RubymineProjects/PhotoUjin/app/assets/stylesheets/responsive.scss */
+  .wrapper .contact-information .social li img {
+    width: 80px;
+  }
+  /* line 364, /home/igor/RubymineProjects/PhotoUjin/app/assets/stylesheets/responsive.scss */
+  .wrapper .contact-information .social li img.photo-love-ujin {
+    width: 100px;
+  }
+  /* line 371, /home/igor/RubymineProjects/PhotoUjin/app/assets/stylesheets/responsive.scss */
+  .wrapper .question {
+    height: 225px;
+    margin-bottom: 40px;
+    padding: 23px 14px 21px 12px;
+    text-align: center;
+  }
+  /* line 376, /home/igor/RubymineProjects/PhotoUjin/app/assets/stylesheets/responsive.scss */
+  .wrapper .question form {
+    height: 300px;
+  }
+  /* line 378, /home/igor/RubymineProjects/PhotoUjin/app/assets/stylesheets/responsive.scss */
+  .wrapper .question form .label-text {
+    font-size: 32px;
+  }
+  /* line 381, /home/igor/RubymineProjects/PhotoUjin/app/assets/stylesheets/responsive.scss */
+  .wrapper .question form .input-text {
+    height: 155px;
+    width: 430px;
+  }
+  /* line 384, /home/igor/RubymineProjects/PhotoUjin/app/assets/stylesheets/responsive.scss */
+  .wrapper .question form .input-text textarea {
+    width: 350px;
+    height: 130px;
+  }
+  /* line 389, /home/igor/RubymineProjects/PhotoUjin/app/assets/stylesheets/responsive.scss */
+  .wrapper .question form input[type="text"] {
+    font-size: 15px;
+    height: 37px;
+    width: 263px;
+    margin-right: 11px;
+  }
+  /* line 395, /home/igor/RubymineProjects/PhotoUjin/app/assets/stylesheets/responsive.scss */
+  .wrapper .question form input[type="submit"] {
+    font-size: 21px;
+    height: 48px;
+    width: 128px;
+    left: 15px;
+    margin-top: 17px;
+    bottom: -8px;
+  }
+  /* line 406, /home/igor/RubymineProjects/PhotoUjin/app/assets/stylesheets/responsive.scss */
+  .wrapper footer p {
+    padding-right: 15px;
+  }
+}
+/* ------------------------------------------ */
+/* -----------responsive by (768px)---------- */
+/* ------------------------------------------ */
+@media only screen and (min-width: 768px) {
+  /* line 417, /home/igor/RubymineProjects/PhotoUjin/app/assets/stylesheets/responsive.scss */
+  .wrapper {
+    width: 768px;
+    min-width: 0;
+  }
+  /* line 420, /home/igor/RubymineProjects/PhotoUjin/app/assets/stylesheets/responsive.scss */
+  .wrapper header {
+    width: 768px;
+    background-position: -100px -41px;
+  }
+  /* line 426, /home/igor/RubymineProjects/PhotoUjin/app/assets/stylesheets/responsive.scss */
+  .wrapper header .nav-page-list li .nav-page li {
+    padding-right: 8px;
+  }
+  /* line 428, /home/igor/RubymineProjects/PhotoUjin/app/assets/stylesheets/responsive.scss */
+  .wrapper header .nav-page-list li .nav-page li a {
+    font-size: 28px;
+  }
+  /* line 433, /home/igor/RubymineProjects/PhotoUjin/app/assets/stylesheets/responsive.scss */
+  .wrapper header .nav-page-list li #nav-page3 {
+    width: 768px;
+  }
+  /* line 435, /home/igor/RubymineProjects/PhotoUjin/app/assets/stylesheets/responsive.scss */
+  .wrapper header .nav-page-list li #nav-page3 li {
+    width: 175px;
+  }
+  /* line 441, /home/igor/RubymineProjects/PhotoUjin/app/assets/stylesheets/responsive.scss */
+  .wrapper header .nav {
+    margin-left: 30px;
+  }
+  /* line 443, /home/igor/RubymineProjects/PhotoUjin/app/assets/stylesheets/responsive.scss */
+  .wrapper header .nav li {
+    height: 300px;
+    margin-right: 32px;
+    width: 200px;
+  }
+  /* line 447, /home/igor/RubymineProjects/PhotoUjin/app/assets/stylesheets/responsive.scss */
+  .wrapper header .nav li.photo1 {
+    background-size: cover;
+  }
+  /* line 449, /home/igor/RubymineProjects/PhotoUjin/app/assets/stylesheets/responsive.scss */
+  .wrapper header .nav li.photo1:hover {
+    background-size: cover;
+  }
+  /* line 453, /home/igor/RubymineProjects/PhotoUjin/app/assets/stylesheets/responsive.scss */
+  .wrapper header .nav li.photo1-active {
+    background-size: cover;
+  }
+  /* line 456, /home/igor/RubymineProjects/PhotoUjin/app/assets/stylesheets/responsive.scss */
+  .wrapper header .nav li.photo2 {
+    background-size: cover;
+  }
+  /* line 458, /home/igor/RubymineProjects/PhotoUjin/app/assets/stylesheets/responsive.scss */
+  .wrapper header .nav li.photo2:hover {
+    background-size: cover;
+  }
+  /* line 462, /home/igor/RubymineProjects/PhotoUjin/app/assets/stylesheets/responsive.scss */
+  .wrapper header .nav li.photo2-active {
+    background-size: cover;
+  }
+  /* line 465, /home/igor/RubymineProjects/PhotoUjin/app/assets/stylesheets/responsive.scss */
+  .wrapper header .nav li.photo3 {
+    background-size: cover;
+  }
+  /* line 467, /home/igor/RubymineProjects/PhotoUjin/app/assets/stylesheets/responsive.scss */
+  .wrapper header .nav li.photo3:hover {
+    background-size: cover;
+  }
+  /* line 471, /home/igor/RubymineProjects/PhotoUjin/app/assets/stylesheets/responsive.scss */
+  .wrapper header .nav li.photo3-active {
+    background-size: cover;
+  }
+  /* line 477, /home/igor/RubymineProjects/PhotoUjin/app/assets/stylesheets/responsive.scss */
+  .wrapper header .information ul {
+    padding-left: 33px;
+  }
+  /* line 479, /home/igor/RubymineProjects/PhotoUjin/app/assets/stylesheets/responsive.scss */
+  .wrapper header .information ul li {
+    margin-right: 13px;
+    width: 231px;
+    font-size: 16px;
+  }
+  /* line 487, /home/igor/RubymineProjects/PhotoUjin/app/assets/stylesheets/responsive.scss */
+  .wrapper .content {
+    width: 768px;
+  }
+  /* line 489, /home/igor/RubymineProjects/PhotoUjin/app/assets/stylesheets/responsive.scss */
+  .wrapper .content .subject-matter {
+    width: 768px;
+  }
+  /* line 491, /home/igor/RubymineProjects/PhotoUjin/app/assets/stylesheets/responsive.scss */
+  .wrapper .content .subject-matter p {
+    width: 768px;
+  }
+  /* line 498, /home/igor/RubymineProjects/PhotoUjin/app/assets/stylesheets/responsive.scss */
+  .wrapper .content .ui-tabs .ui-tabs-nav li a {
+    padding: 10px 14.5px;
+    font-size: 17px;
+  }
+  /* line 504, /home/igor/RubymineProjects/PhotoUjin/app/assets/stylesheets/responsive.scss */
+  .wrapper .content .ui-tabs .ca-container {
+    width: 768px;
+  }
+  /* line 510, /home/igor/RubymineProjects/PhotoUjin/app/assets/stylesheets/responsive.scss */
+  .wrapper .content .price .price-list li {
+    margin: 0 40px 36px;
+  }
+  /* line 512, /home/igor/RubymineProjects/PhotoUjin/app/assets/stylesheets/responsive.scss */
+  .wrapper .content .price .price-list li h4 {
+    font-size: 26px;
+  }
+  /* line 515, /home/igor/RubymineProjects/PhotoUjin/app/assets/stylesheets/responsive.scss */
+  .wrapper .content .price .price-list li .description {
+    margin: 24px 25px 24px 40px;
+  }
+  /* line 517, /home/igor/RubymineProjects/PhotoUjin/app/assets/stylesheets/responsive.scss */
+  .wrapper .content .price .price-list li .description li {
+    font-size: 25px;
+  }
+  /* line 524, /home/igor/RubymineProjects/PhotoUjin/app/assets/stylesheets/responsive.scss */
+  .wrapper .content .price .more-information li {
+    font-size: 27px;
+  }
+  /* line 529, /home/igor/RubymineProjects/PhotoUjin/app/assets/stylesheets/responsive.scss */
+  .wrapper .content .conditions {
+    padding: 45px 58px 34px 63px;
+  }
+  /* line 531, /home/igor/RubymineProjects/PhotoUjin/app/assets/stylesheets/responsive.scss */
+  .wrapper .content .conditions li {
+    font-size: 25px;
+  }
+  /* line 537, /home/igor/RubymineProjects/PhotoUjin/app/assets/stylesheets/responsive.scss */
+  .wrapper .content .page2 .invitation li {
+    width: 18%;
+    font-size: 21px;
+  }
+  /* line 540, /home/igor/RubymineProjects/PhotoUjin/app/assets/stylesheets/responsive.scss */
+  .wrapper .content .page2 .invitation li img {
+    width: 100%;
+  }
+  /* line 546, /home/igor/RubymineProjects/PhotoUjin/app/assets/stylesheets/responsive.scss */
+  .wrapper .content .page2 .big-list-photo li {
+    width: 30%;
+    height: auto;
+  }
+  /* line 549, /home/igor/RubymineProjects/PhotoUjin/app/assets/stylesheets/responsive.scss */
+  .wrapper .content .page2 .big-list-photo li:nth-child(4) {
+    width: 49%;
+  }
+  /* line 552, /home/igor/RubymineProjects/PhotoUjin/app/assets/stylesheets/responsive.scss */
+  .wrapper .content .page2 .big-list-photo li:last-child {
+    width: 45%;
+  }
+  /* line 555, /home/igor/RubymineProjects/PhotoUjin/app/assets/stylesheets/responsive.scss */
+  .wrapper .content .page2 .big-list-photo li img {
+    width: 100%;
+    height: 260px;
+  }
+  /* line 562, /home/igor/RubymineProjects/PhotoUjin/app/assets/stylesheets/responsive.scss */
+  .wrapper .content .page2 .two-big-photo img {
+    width: 50%;
+  }
+  /* line 567, /home/igor/RubymineProjects/PhotoUjin/app/assets/stylesheets/responsive.scss */
+  .wrapper .content .page2 .table table {
+    margin-left: 25px;
+  }
+  /* line 569, /home/igor/RubymineProjects/PhotoUjin/app/assets/stylesheets/responsive.scss */
+  .wrapper .content .page2 .table table td {
+    padding-bottom: 60px;
+  }
+  /* line 571, /home/igor/RubymineProjects/PhotoUjin/app/assets/stylesheets/responsive.scss */
+  .wrapper .content .page2 .table table td.name {
+    width: 323px;
+    font-size: 22px;
+    padding-right: 25px;
+  }
+  /* line 576, /home/igor/RubymineProjects/PhotoUjin/app/assets/stylesheets/responsive.scss */
+  .wrapper .content .page2 .table table td.quantity {
+    font-size: 40px;
+    width: 120px;
+    padding-right: 160px;
+  }
+  /* line 581, /home/igor/RubymineProjects/PhotoUjin/app/assets/stylesheets/responsive.scss */
+  .wrapper .content .page2 .table table td.cost {
+    font-size: 28px;
+  }
+  /* line 586, /home/igor/RubymineProjects/PhotoUjin/app/assets/stylesheets/responsive.scss */
+  .wrapper .content .page2 .table .commentary2 {
+    bottom: 24px;
+    font-size: 16px;
+    height: 51px;
+  }
+  /* line 596, /home/igor/RubymineProjects/PhotoUjin/app/assets/stylesheets/responsive.scss */
+  .wrapper .content .page3 .book-list li .photo-gallery-wrapp {
+    float: left;
+  }
+  /* line 603, /home/igor/RubymineProjects/PhotoUjin/app/assets/stylesheets/responsive.scss */
+  .wrapper .message {
+    left: 75px;
+  }
+  /* line 605, /home/igor/RubymineProjects/PhotoUjin/app/assets/stylesheets/responsive.scss */
+  .wrapper .message li {
+    height: 160px;
+  }
+  /* line 607, /home/igor/RubymineProjects/PhotoUjin/app/assets/stylesheets/responsive.scss */
+  .wrapper .message li a {
+    background-image: url(http://res-2.cloudinary.com/dm1mh6uld/image/asset/background-link.fw-a402f887dfde5f98086d1a22339c5e23.png);
+    background-repeat: no-repeat;
+  }
+  /* line 612, /home/igor/RubymineProjects/PhotoUjin/app/assets/stylesheets/responsive.scss */
+  .wrapper .message li a p {
+    font-size: 23px;
+    left: 200px;
+  }
+  /* line 618, /home/igor/RubymineProjects/PhotoUjin/app/assets/stylesheets/responsive.scss */
+  .wrapper .message li.big-message a {
+    width: 450px;
+    height: 159px;
+  }
+  /* line 621, /home/igor/RubymineProjects/PhotoUjin/app/assets/stylesheets/responsive.scss */
+  .wrapper .message li.big-message a p {
+    font-size: 15px;
+  }
+  /* line 628, /home/igor/RubymineProjects/PhotoUjin/app/assets/stylesheets/responsive.scss */
+  .wrapper .message li.small-text a p {
+    font-size: 25px;
+  }
+  /* line 634, /home/igor/RubymineProjects/PhotoUjin/app/assets/stylesheets/responsive.scss */
+  .wrapper .message li.small-message a {
+    background-position: -480px 0;
+    height: 159px;
+    width: 156px;
+  }
+  /* line 642, /home/igor/RubymineProjects/PhotoUjin/app/assets/stylesheets/responsive.scss */
+  .wrapper .call-me {
+    width: 666px;
+  }
+  /* line 645, /home/igor/RubymineProjects/PhotoUjin/app/assets/stylesheets/responsive.scss */
+  .wrapper .call-me .call-text p {
+    font-size: 40px;
+    top: 41px;
+  }
+  /* line 652, /home/igor/RubymineProjects/PhotoUjin/app/assets/stylesheets/responsive.scss */
+  .wrapper .contact-information .label-phone {
+    font-size: 32px;
+  }
+  /* line 655, /home/igor/RubymineProjects/PhotoUjin/app/assets/stylesheets/responsive.scss */
+  .wrapper .contact-information .input-phone {
+    width: 585px;
+  }
+  /* line 657, /home/igor/RubymineProjects/PhotoUjin/app/assets/stylesheets/responsive.scss */
+  .wrapper .contact-information .input-phone input[type="text"] {
+    width: 558px;
+  }
+  /* line 661, /home/igor/RubymineProjects/PhotoUjin/app/assets/stylesheets/responsive.scss */
+  .wrapper .contact-information input[type="submit"] {
+    width: 449px;
+  }
+  /* line 664, /home/igor/RubymineProjects/PhotoUjin/app/assets/stylesheets/responsive.scss */
+  .wrapper .contact-information .social {
+    margin-left: 105px;
+  }
+  /* line 666, /home/igor/RubymineProjects/PhotoUjin/app/assets/stylesheets/responsive.scss */
+  .wrapper .contact-information .social li {
+    margin-right: 80px;
+  }
+  /* line 668, /home/igor/RubymineProjects/PhotoUjin/app/assets/stylesheets/responsive.scss */
+  .wrapper .contact-information .social li img {
+    width: inherit;
+  }
+  /* line 670, /home/igor/RubymineProjects/PhotoUjin/app/assets/stylesheets/responsive.scss */
+  .wrapper .contact-information .social li img.photo-love-ujin {
+    width: 146px;
+  }
+  /* line 678, /home/igor/RubymineProjects/PhotoUjin/app/assets/stylesheets/responsive.scss */
+  .wrapper .question form {
+    height: 270px;
+  }
+  /* line 680, /home/igor/RubymineProjects/PhotoUjin/app/assets/stylesheets/responsive.scss */
+  .wrapper .question form .label-text {
+    font-size: 38px;
+  }
+  /* line 683, /home/igor/RubymineProjects/PhotoUjin/app/assets/stylesheets/responsive.scss */
+  .wrapper .question form .input-text {
+    height: 157px;
+    width: 740px;
+  }
+  /* line 686, /home/igor/RubymineProjects/PhotoUjin/app/assets/stylesheets/responsive.scss */
+  .wrapper .question form .input-text textarea {
+    width: 640px;
+    height: 130px;
+  }
+  /* line 691, /home/igor/RubymineProjects/PhotoUjin/app/assets/stylesheets/responsive.scss */
+  .wrapper .question form input[type="text"] {
+    margin-right: 45px;
+    margin-top: 1px;
+    font-size: 19px;
+    width: 350px;
+  }
+  /* line 697, /home/igor/RubymineProjects/PhotoUjin/app/assets/stylesheets/responsive.scss */
+  .wrapper .question form input[type="submit"] {
+    font-size: 31px;
+    width: 220px;
+    bottom: 2px;
+  }
+}
+/* ------------------------------------------ */
+/* -----------responsive by (1024px)---------- */
+/* ------------------------------------------ */
+@media only screen and (min-width: 1024px) {
+  /* line 710, /home/igor/RubymineProjects/PhotoUjin/app/assets/stylesheets/responsive.scss */
+  .wrapper {
+    width: 1024px;
+  }
+  /* line 712, /home/igor/RubymineProjects/PhotoUjin/app/assets/stylesheets/responsive.scss */
+  .wrapper header {
+    width: 1024px;
+    background-position: -3px -41px;
+  }
+  /* line 719, /home/igor/RubymineProjects/PhotoUjin/app/assets/stylesheets/responsive.scss */
+  .wrapper header .nav-page-list li .nav-page li a {
+    font-size: 38px;
+  }
+  /* line 724, /home/igor/RubymineProjects/PhotoUjin/app/assets/stylesheets/responsive.scss */
+  .wrapper header .nav-page-list li #nav-page3 {
+    width: 1024px;
+  }
+  /* line 726, /home/igor/RubymineProjects/PhotoUjin/app/assets/stylesheets/responsive.scss */
+  .wrapper header .nav-page-list li #nav-page3 li {
+    width: 245px;
+  }
+  /* line 732, /home/igor/RubymineProjects/PhotoUjin/app/assets/stylesheets/responsive.scss */
+  .wrapper header .nav {
+    overflow: hidden;
+    margin-right: -10px;
+    margin-bottom: 40px;
+  }
+  /* line 738, /home/igor/RubymineProjects/PhotoUjin/app/assets/stylesheets/responsive.scss */
+  .wrapper header .nav li {
+    height: 467px;
+    margin-right: 5px;
+    width: 311px;
+  }
+  /* line 742, /home/igor/RubymineProjects/PhotoUjin/app/assets/stylesheets/responsive.scss */
+  .wrapper header .nav li.photo1 {
+    background-size: 311px auto;
+  }
+  /* line 744, /home/igor/RubymineProjects/PhotoUjin/app/assets/stylesheets/responsive.scss */
+  .wrapper header .nav li.photo1:hover {
+    background-size: 311px auto;
+  }
+  /* line 748, /home/igor/RubymineProjects/PhotoUjin/app/assets/stylesheets/responsive.scss */
+  .wrapper header .nav li.photo1-active {
+    background-size: 311px auto;
+  }
+  /* line 751, /home/igor/RubymineProjects/PhotoUjin/app/assets/stylesheets/responsive.scss */
+  .wrapper header .nav li.photo2 {
+    background-size: 311px auto;
+  }
+  /* line 753, /home/igor/RubymineProjects/PhotoUjin/app/assets/stylesheets/responsive.scss */
+  .wrapper header .nav li.photo2:hover {
+    background-size: 311px auto;
+  }
+  /* line 757, /home/igor/RubymineProjects/PhotoUjin/app/assets/stylesheets/responsive.scss */
+  .wrapper header .nav li.photo2-active {
+    background-size: 311px auto;
+  }
+  /* line 760, /home/igor/RubymineProjects/PhotoUjin/app/assets/stylesheets/responsive.scss */
+  .wrapper header .nav li.photo3 {
+    background-size: 311px auto;
+  }
+  /* line 762, /home/igor/RubymineProjects/PhotoUjin/app/assets/stylesheets/responsive.scss */
+  .wrapper header .nav li.photo3:hover {
+    background-size: 311px auto;
+  }
+  /* line 766, /home/igor/RubymineProjects/PhotoUjin/app/assets/stylesheets/responsive.scss */
+  .wrapper header .nav li.photo3-active {
+    background-size: 311px auto;
+  }
+  /* line 773, /home/igor/RubymineProjects/PhotoUjin/app/assets/stylesheets/responsive.scss */
+  .wrapper header .information ul li {
+    width: 278px;
+    font-size: 21px;
+  }
+  /* line 780, /home/igor/RubymineProjects/PhotoUjin/app/assets/stylesheets/responsive.scss */
+  .wrapper .content {
+    width: 1024px;
+  }
+  /* line 782, /home/igor/RubymineProjects/PhotoUjin/app/assets/stylesheets/responsive.scss */
+  .wrapper .content .subject-matter {
+    width: 1024px;
+  }
+  /* line 784, /home/igor/RubymineProjects/PhotoUjin/app/assets/stylesheets/responsive.scss */
+  .wrapper .content .subject-matter p {
+    width: 768px;
+  }
+  /* line 791, /home/igor/RubymineProjects/PhotoUjin/app/assets/stylesheets/responsive.scss */
+  .wrapper .content .ui-tabs .ui-tabs-nav li a {
+    font-size: 16px;
+    padding: 10px 33px;
+  }
+  /* line 797, /home/igor/RubymineProjects/PhotoUjin/app/assets/stylesheets/responsive.scss */
+  .wrapper .content .ui-tabs .ca-container {
+    width: 1024px;
+  }
+  /* line 804, /home/igor/RubymineProjects/PhotoUjin/app/assets/stylesheets/responsive.scss */
+  .wrapper .content .price .price-list li h4 {
+    font-size: 26px;
+  }
+  /* line 807, /home/igor/RubymineProjects/PhotoUjin/app/assets/stylesheets/responsive.scss */
+  .wrapper .content .price .price-list li .description {
+    margin: 24px 25px 24px 40px;
+  }
+  /* line 809, /home/igor/RubymineProjects/PhotoUjin/app/assets/stylesheets/responsive.scss */
+  .wrapper .content .price .price-list li .description li {
+    font-size: 25px;
+  }
+  /* line 816, /home/igor/RubymineProjects/PhotoUjin/app/assets/stylesheets/responsive.scss */
+  .wrapper .content .price .more-information li {
+    font-size: 27px;
+  }
+  /* line 821, /home/igor/RubymineProjects/PhotoUjin/app/assets/stylesheets/responsive.scss */
+  .wrapper .content .conditions {
+    padding: 45px 58px 34px 63px;
+  }
+  /* line 823, /home/igor/RubymineProjects/PhotoUjin/app/assets/stylesheets/responsive.scss */
+  .wrapper .content .conditions li {
+    font-size: 25px;
+  }
+  /* line 828, /home/igor/RubymineProjects/PhotoUjin/app/assets/stylesheets/responsive.scss */
+  .wrapper .content .page2 h2 {
+    font-size: 40px;
+  }
+  /* line 831, /home/igor/RubymineProjects/PhotoUjin/app/assets/stylesheets/responsive.scss */
+  .wrapper .content .page2 .table {
+    padding-top: 22px;
+  }
+  /* line 833, /home/igor/RubymineProjects/PhotoUjin/app/assets/stylesheets/responsive.scss */
+  .wrapper .content .page2 .table table {
+    margin-left: 121px;
+  }
+  /* line 835, /home/igor/RubymineProjects/PhotoUjin/app/assets/stylesheets/responsive.scss */
+  .wrapper .content .page2 .table table td {
+    padding-bottom: 60px;
+  }
+  /* line 837, /home/igor/RubymineProjects/PhotoUjin/app/assets/stylesheets/responsive.scss */
+  .wrapper .content .page2 .table table td.name {
+    width: 323px;
+    font-size: 22px;
+    padding-right: 35px;
+  }
+  /* line 842, /home/igor/RubymineProjects/PhotoUjin/app/assets/stylesheets/responsive.scss */
+  .wrapper .content .page2 .table table td.quantity {
+    font-size: 40px;
+    width: 120px;
+    padding-right: 108px;
+  }
+  /* line 846, /home/igor/RubymineProjects/PhotoUjin/app/assets/stylesheets/responsive.scss */
+  .wrapper .content .page2 .table table td.quantity span {
+    font-size: 20px;
+    width: 120px;
+  }
+  /* line 851, /home/igor/RubymineProjects/PhotoUjin/app/assets/stylesheets/responsive.scss */
+  .wrapper .content .page2 .table table td.cost {
+    font-size: 28px;
+  }
+  /* line 857, /home/igor/RubymineProjects/PhotoUjin/app/assets/stylesheets/responsive.scss */
+  .wrapper .content .page2 .commentary2 {
+    bottom: 60px;
+    font-size: 19px;
+    height: 51px;
+  }
+  /* line 866, /home/igor/RubymineProjects/PhotoUjin/app/assets/stylesheets/responsive.scss */
+  .wrapper .content .page3 .book-list li h2 {
+    font-size: 35px;
+  }
+  /* line 869, /home/igor/RubymineProjects/PhotoUjin/app/assets/stylesheets/responsive.scss */
+  .wrapper .content .page3 .book-list li .photo-gallery-wrapp {
+    float: left;
+  }
+  /* line 877, /home/igor/RubymineProjects/PhotoUjin/app/assets/stylesheets/responsive.scss */
+  .wrapper .message li {
+    height: 160px;
+  }
+  /* line 880, /home/igor/RubymineProjects/PhotoUjin/app/assets/stylesheets/responsive.scss */
+  .wrapper .message li a p {
+    font-size: 23px;
+    left: 200px;
+  }
+  /* line 886, /home/igor/RubymineProjects/PhotoUjin/app/assets/stylesheets/responsive.scss */
+  .wrapper .message li.big-message a {
+    width: 450px;
+    height: 159px;
+  }
+  /* line 892, /home/igor/RubymineProjects/PhotoUjin/app/assets/stylesheets/responsive.scss */
+  .wrapper .message li.small-message a {
+    background-position: -480px 0;
+    height: 159px;
+    width: 156px;
+  }
+  /* line 900, /home/igor/RubymineProjects/PhotoUjin/app/assets/stylesheets/responsive.scss */
+  .wrapper .call-me {
+    width: 666px;
+  }
+  /* line 903, /home/igor/RubymineProjects/PhotoUjin/app/assets/stylesheets/responsive.scss */
+  .wrapper .call-me .call-text p {
+    font-size: 40px;
+    top: 41px;
+  }
+  /* line 910, /home/igor/RubymineProjects/PhotoUjin/app/assets/stylesheets/responsive.scss */
+  .wrapper .contact-information .social {
+    margin-left: 105px;
+  }
+  /* line 914, /home/igor/RubymineProjects/PhotoUjin/app/assets/stylesheets/responsive.scss */
+  .wrapper .question {
+    padding: 23px 94px 21px 52px;
+    height: 262px;
+    margin-bottom: 40px;
+  }
+  /* line 918, /home/igor/RubymineProjects/PhotoUjin/app/assets/stylesheets/responsive.scss */
+  .wrapper .question form {
+    height: 310px;
+  }
+  /* line 920, /home/igor/RubymineProjects/PhotoUjin/app/assets/stylesheets/responsive.scss */
+  .wrapper .question form .label-text {
+    font-size: 54px;
+  }
+  /* line 923, /home/igor/RubymineProjects/PhotoUjin/app/assets/stylesheets/responsive.scss */
+  .wrapper .question form .input-text {
+    width: 910px;
+    height: 130px;
+    font-size: 25px;
+  }
+  /* line 927, /home/igor/RubymineProjects/PhotoUjin/app/assets/stylesheets/responsive.scss */
+  .wrapper .question form .input-text textarea {
+    width: 830px;
+  }
+  /* line 931, /home/igor/RubymineProjects/PhotoUjin/app/assets/stylesheets/responsive.scss */
+  .wrapper .question form input[type="text"] {
+    height: 47px;
+    width: 446px;
+    font-size: 25px;
+    margin-right: -5px;
+    margin-top: 30px;
+  }
+  /* line 940, /home/igor/RubymineProjects/PhotoUjin/app/assets/stylesheets/responsive.scss */
+  .wrapper .question form input[type="submit"] {
+    font-size: 32px;
+    height: 58px;
+    margin-bottom: 162px;
+    width: 220px;
+    bottom: -36px;
+  }
+}
+/* ------------------------------------------ */
+/* -----------responsive by (1200px)---------- */
+/* ------------------------------------------ */
+@media only screen and (min-width: 1200px) {
+  /* line 955, /home/igor/RubymineProjects/PhotoUjin/app/assets/stylesheets/responsive.scss */
+  .wrapper {
+    width: 1200px;
+  }
+  /* line 957, /home/igor/RubymineProjects/PhotoUjin/app/assets/stylesheets/responsive.scss */
+  .wrapper header {
+    width: 1200px;
+  }
+  /* line 963, /home/igor/RubymineProjects/PhotoUjin/app/assets/stylesheets/responsive.scss */
+  .wrapper header .nav-page-list li .nav-page li a {
+    font-size: 42px;
+  }
+  /* line 968, /home/igor/RubymineProjects/PhotoUjin/app/assets/stylesheets/responsive.scss */
+  .wrapper header .nav-page-list li #nav-page3 {
+    width: 1200px;
+  }
+  /* line 970, /home/igor/RubymineProjects/PhotoUjin/app/assets/stylesheets/responsive.scss */
+  .wrapper header .nav-page-list li #nav-page3 li {
+    width: 280px;
+  }
+  /* line 976, /home/igor/RubymineProjects/PhotoUjin/app/assets/stylesheets/responsive.scss */
+  .wrapper header .nav {
+    margin-left: 30px;
+  }
+  /* line 978, /home/igor/RubymineProjects/PhotoUjin/app/assets/stylesheets/responsive.scss */
+  .wrapper header .nav li {
+    width: 311px;
+    height: 467px;
+    margin-right: 65px;
+  }
+  /* line 982, /home/igor/RubymineProjects/PhotoUjin/app/assets/stylesheets/responsive.scss */
+  .wrapper header .nav li.photo1 {
+    background-size: cover;
+  }
+  /* line 984, /home/igor/RubymineProjects/PhotoUjin/app/assets/stylesheets/responsive.scss */
+  .wrapper header .nav li.photo1:hover {
+    background-size: cover;
+  }
+  /* line 988, /home/igor/RubymineProjects/PhotoUjin/app/assets/stylesheets/responsive.scss */
+  .wrapper header .nav li.photo1-active {
+    background-size: cover;
+  }
+  /* line 991, /home/igor/RubymineProjects/PhotoUjin/app/assets/stylesheets/responsive.scss */
+  .wrapper header .nav li.photo2 {
+    background-size: cover;
+  }
+  /* line 993, /home/igor/RubymineProjects/PhotoUjin/app/assets/stylesheets/responsive.scss */
+  .wrapper header .nav li.photo2:hover {
+    background-size: cover;
+  }
+  /* line 997, /home/igor/RubymineProjects/PhotoUjin/app/assets/stylesheets/responsive.scss */
+  .wrapper header .nav li.photo2-active {
+    background-size: cover;
+  }
+  /* line 1000, /home/igor/RubymineProjects/PhotoUjin/app/assets/stylesheets/responsive.scss */
+  .wrapper header .nav li.photo3 {
+    background-size: cover;
+  }
+  /* line 1002, /home/igor/RubymineProjects/PhotoUjin/app/assets/stylesheets/responsive.scss */
+  .wrapper header .nav li.photo3:hover {
+    background-size: cover;
+  }
+  /* line 1006, /home/igor/RubymineProjects/PhotoUjin/app/assets/stylesheets/responsive.scss */
+  .wrapper header .nav li.photo3-active {
+    background-size: cover;
+  }
+  /* line 1011, /home/igor/RubymineProjects/PhotoUjin/app/assets/stylesheets/responsive.scss */
+  .wrapper header .information {
+    width: 1200px;
+  }
+  /* line 1014, /home/igor/RubymineProjects/PhotoUjin/app/assets/stylesheets/responsive.scss */
+  .wrapper header .information ul li {
+    width: 338px;
+    font-size: 24px;
+  }
+  /* line 1021, /home/igor/RubymineProjects/PhotoUjin/app/assets/stylesheets/responsive.scss */
+  .wrapper .content {
+    width: 1200px;
+  }
+  /* line 1023, /home/igor/RubymineProjects/PhotoUjin/app/assets/stylesheets/responsive.scss */
+  .wrapper .content .subject-matter {
+    width: 1200px;
+  }
+  /* line 1025, /home/igor/RubymineProjects/PhotoUjin/app/assets/stylesheets/responsive.scss */
+  .wrapper .content .subject-matter p {
+    font-size: 28px;
+  }
+  /* line 1031, /home/igor/RubymineProjects/PhotoUjin/app/assets/stylesheets/responsive.scss */
+  .wrapper .content .ui-tabs .ui-tabs-nav li {
+    height: 55px;
+  }
+  /* line 1033, /home/igor/RubymineProjects/PhotoUjin/app/assets/stylesheets/responsive.scss */
+  .wrapper .content .ui-tabs .ui-tabs-nav li a {
+    padding: 10px 46px;
+    font-size: 17px;
+  }
+  /* line 1039, /home/igor/RubymineProjects/PhotoUjin/app/assets/stylesheets/responsive.scss */
+  .wrapper .content .ui-tabs .ca-container {
+    width: 1200px;
+  }
+  /* line 1046, /home/igor/RubymineProjects/PhotoUjin/app/assets/stylesheets/responsive.scss */
+  .wrapper .content .price .price-list li h4 {
+    font-size: 26px;
+  }
+  /* line 1049, /home/igor/RubymineProjects/PhotoUjin/app/assets/stylesheets/responsive.scss */
+  .wrapper .content .price .price-list li .description {
+    margin: 24px 25px 24px 40px;
+  }
+  /* line 1051, /home/igor/RubymineProjects/PhotoUjin/app/assets/stylesheets/responsive.scss */
+  .wrapper .content .price .price-list li .description li {
+    font-size: 25px;
+  }
+  /* line 1058, /home/igor/RubymineProjects/PhotoUjin/app/assets/stylesheets/responsive.scss */
+  .wrapper .content .price .more-information li {
+    font-size: 27px;
+  }
+  /* line 1063, /home/igor/RubymineProjects/PhotoUjin/app/assets/stylesheets/responsive.scss */
+  .wrapper .content .conditions {
+    padding: 45px 58px 34px 63px;
+  }
+  /* line 1065, /home/igor/RubymineProjects/PhotoUjin/app/assets/stylesheets/responsive.scss */
+  .wrapper .content .conditions li {
+    font-size: 25px;
+  }
+  /* line 1070, /home/igor/RubymineProjects/PhotoUjin/app/assets/stylesheets/responsive.scss */
+  .wrapper .content .page2 h2 {
+    font-size: 44px;
+  }
+  /* line 1074, /home/igor/RubymineProjects/PhotoUjin/app/assets/stylesheets/responsive.scss */
+  .wrapper .content .page2 .invitation li {
+    width: 19%;
+    font-size: 21px;
+  }
+  /* line 1079, /home/igor/RubymineProjects/PhotoUjin/app/assets/stylesheets/responsive.scss */
+  .wrapper .content .page2 .big-list-photo {
+    padding-left: 0;
+  }
+  /* line 1083, /home/igor/RubymineProjects/PhotoUjin/app/assets/stylesheets/responsive.scss */
+  .wrapper .content .page2 .big-list-photo li a img {
+    height: 350px;
+  }
+  /* line 1090, /home/igor/RubymineProjects/PhotoUjin/app/assets/stylesheets/responsive.scss */
+  .wrapper .content .page2 .two-big-photo img {
+    height: 450px;
+  }
+  /* line 1095, /home/igor/RubymineProjects/PhotoUjin/app/assets/stylesheets/responsive.scss */
+  .wrapper .content .page2 .table table {
+    margin-left: 81px;
+  }
+  /* line 1097, /home/igor/RubymineProjects/PhotoUjin/app/assets/stylesheets/responsive.scss */
+  .wrapper .content .page2 .table table td {
+    padding-bottom: 60px;
+  }
+  /* line 1099, /home/igor/RubymineProjects/PhotoUjin/app/assets/stylesheets/responsive.scss */
+  .wrapper .content .page2 .table table td.name {
+    font-size: 22px;
+    padding-right: 185px;
+    width: 323px;
+  }
+  /* line 1104, /home/igor/RubymineProjects/PhotoUjin/app/assets/stylesheets/responsive.scss */
+  .wrapper .content .page2 .table table td.quantity {
+    padding-right: 218px;
+    font-size: 40px;
+  }
+  /* line 1111, /home/igor/RubymineProjects/PhotoUjin/app/assets/stylesheets/responsive.scss */
+  .wrapper .content .page2 .commentary2 {
+    bottom: 52px;
+    font-size: 19px;
+    height: 51px;
+  }
+  /* line 1119, /home/igor/RubymineProjects/PhotoUjin/app/assets/stylesheets/responsive.scss */
+  .wrapper .content .page3 .book-list li {
+    width: initial;
+    overflow: hidden;
+  }
+  /* line 1122, /home/igor/RubymineProjects/PhotoUjin/app/assets/stylesheets/responsive.scss */
+  .wrapper .content .page3 .book-list li h2 {
+    font-size: 44px;
+  }
+  /* line 1125, /home/igor/RubymineProjects/PhotoUjin/app/assets/stylesheets/responsive.scss */
+  .wrapper .content .page3 .book-list li .photo-gallery-wrapp {
+    float: left;
+  }
+  /* line 1128, /home/igor/RubymineProjects/PhotoUjin/app/assets/stylesheets/responsive.scss */
+  .wrapper .content .page3 .book-list li .info-wrapp {
+    text-align: initial;
+  }
+  /* line 1136, /home/igor/RubymineProjects/PhotoUjin/app/assets/stylesheets/responsive.scss */
+  .wrapper .message li {
+    height: 160px;
+  }
+  /* line 1138, /home/igor/RubymineProjects/PhotoUjin/app/assets/stylesheets/responsive.scss */
+  .wrapper .message li a {
+    background-image: url(http://res-2.cloudinary.com/dm1mh6uld/image/asset/background-link.fw-a402f887dfde5f98086d1a22339c5e23.png);
+    background-repeat: no-repeat;
+  }
+  /* line 1143, /home/igor/RubymineProjects/PhotoUjin/app/assets/stylesheets/responsive.scss */
+  .wrapper .message li a p {
+    font-size: 23px;
+    left: 200px;
+  }
+  /* line 1149, /home/igor/RubymineProjects/PhotoUjin/app/assets/stylesheets/responsive.scss */
+  .wrapper .message li.big-message a {
+    background-size: initial;
+    width: 450px;
+    height: 159px;
+  }
+  /* line 1153, /home/igor/RubymineProjects/PhotoUjin/app/assets/stylesheets/responsive.scss */
+  .wrapper .message li.big-message a p {
+    font-size: 20px;
+    left: 190px;
+    top: 35px;
+  }
+  /* line 1157, /home/igor/RubymineProjects/PhotoUjin/app/assets/stylesheets/responsive.scss */
+  .wrapper .message li.big-message a p span {
+    font-size: 27px;
+    font-weight: bold;
+  }
+  /* line 1166, /home/igor/RubymineProjects/PhotoUjin/app/assets/stylesheets/responsive.scss */
+  .wrapper .message li.small-message {
+    position: relative;
+  }
+  /* line 1168, /home/igor/RubymineProjects/PhotoUjin/app/assets/stylesheets/responsive.scss */
+  .wrapper .message li.small-message a {
+    background-size: initial;
+    background-position: -480px 0;
+    height: 159px;
+    width: 156px;
+  }
+  /* line 1179, /home/igor/RubymineProjects/PhotoUjin/app/assets/stylesheets/responsive.scss */
+  .wrapper .message li.small-text a p {
+    top: 40px;
+    left: 205px;
+    font-size: 40px;
+  }
+  /* line 1188, /home/igor/RubymineProjects/PhotoUjin/app/assets/stylesheets/responsive.scss */
+  .wrapper .call-me {
+    width: 666px;
+  }
+  /* line 1191, /home/igor/RubymineProjects/PhotoUjin/app/assets/stylesheets/responsive.scss */
+  .wrapper .call-me .call-text p {
+    font-size: 40px;
+    top: 41px;
+  }
+  /* line 1197, /home/igor/RubymineProjects/PhotoUjin/app/assets/stylesheets/responsive.scss */
+  .wrapper .question {
+    padding: 23px 94px 21px 52px;
+    height: 302px;
+    margin-bottom: 40px;
+  }
+  /* line 1201, /home/igor/RubymineProjects/PhotoUjin/app/assets/stylesheets/responsive.scss */
+  .wrapper .question form {
+    height: 350px;
+  }
+  /* line 1203, /home/igor/RubymineProjects/PhotoUjin/app/assets/stylesheets/responsive.scss */
+  .wrapper .question form .label-text {
+    font-size: 56px;
+  }
+  /* line 1206, /home/igor/RubymineProjects/PhotoUjin/app/assets/stylesheets/responsive.scss */
+  .wrapper .question form .input-text {
+    width: 1100px;
+    height: 190px;
+  }
+  /* line 1209, /home/igor/RubymineProjects/PhotoUjin/app/assets/stylesheets/responsive.scss */
+  .wrapper .question form .input-text textarea {
+    height: 170px;
+    width: 1000px;
+    font-size: 25px;
+  }
+  /* line 1215, /home/igor/RubymineProjects/PhotoUjin/app/assets/stylesheets/responsive.scss */
+  .wrapper .question form input[type="text"] {
+    height: 47px;
+    width: 446px;
+    margin-top: 11px;
+  }
+  /* line 1220, /home/igor/RubymineProjects/PhotoUjin/app/assets/stylesheets/responsive.scss */
+  .wrapper .question form input[type="submit"] {
+    font-size: 34px;
+    position: relative;
+    top: 12px;
+    height: 58px;
+    margin-bottom: 162px;
+    width: 220px;
+  }
+}
+/* Slider */
+
+.slick-slider {
+    position: relative;
+    display: block;
+    -moz-box-sizing: border-box;
+         box-sizing: border-box;
+    -webkit-user-select: none;
+       -moz-user-select: none;
+        -ms-user-select: none;
+            user-select: none;
+    -webkit-touch-callout: none;
+    -khtml-user-select: none;
+    -ms-touch-action: pan-y;
+        touch-action: pan-y;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.slick-list {
+    position: relative;
+    display: block;
+    overflow: hidden;
+    margin: 0;
+    padding: 0;
+}
+.slick-list:focus {
+    outline: none;
+}
+.slick-list.dragging {
+    cursor: pointer;
+    cursor: hand;
+}
+.slick-slider .slick-track,
+.slick-slider .slick-list {
+    -webkit-transform: translate3d(0, 0, 0);
+       -moz-transform: translate3d(0, 0, 0);
+        -ms-transform: translate3d(0, 0, 0);
+         -o-transform: translate3d(0, 0, 0);
+            transform: translate3d(0, 0, 0);
+			height:440px;
+}
+button.slick-prev, button.slick-next {
+	width: 28px;
+    height: 56px;
+    position: absolute;
+    top: 50%;
+    margin-top: -19px;
+    left: 30px;
+    text-indent: -9000px;
+    opacity: 0.7;
+    cursor: pointer;
+    z-index: 100;
+	border:none;
+}
+button.slick-prev {
+	background: url('left-arrow.fw.png') top left no-repeat;
+}
+button.slick-next {
+	background: url('right-arrow.fw.png') top right no-repeat;
+    left: auto;
+    right: 30px;
+	opacity: 0.7;
+}
+button.slick-prev:hover, button.slick-next:hover {
+	opacity: 1.0;
+}
+.slick-track {
+    position: relative;
+    top: 0;
+    left: 0;
+    display: block;
+}
+.slick-track:before,
+.slick-track:after {
+    display: table;
+    content: '';
+}
+.slick-track:after {
+    clear: both;
+}
+.slick-loading .slick-track {
+    visibility: hidden;
+}
+
+.slick-slide {
+    display: none;
+    float: left;
+    height: 100%;
+    min-height: 1px;
+}
+[dir='rtl'] .slick-slide {
+    float: right;
+}
+.slick-slide img {
+    display: block;
+}
+.slick-slide.slick-loading img {
+    display: none;
+}
+.slick-slide.dragging img {
+    pointer-events: none;
+}
+.slick-initialized .slick-slide {
+    display: block;
+}
+.slick-loading .slick-slide {
+    visibility: hidden;
+}
+.slick-vertical .slick-slide {
+    display: block;
+    height: auto;
+    border: 1px solid transparent;
+}
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or any plugin's vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any styles
+ * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
+ * file per style scope.
+ *
+
+
+ */
+
