@@ -151,7 +151,7 @@
         padding: 45px 18px 34px 23px;
         li {
           background: {
-            image: cloudinary-url('marker.fw.png'), cloudinary-url('grey-marker.fw.png');
+            image: cloudinary-url("marker.fw.png"), cloudinary-url("grey-marker.fw.png");
             repeat: no-repeat, no-repeat;
             position: 0 2px, 100% 3px;
           }
@@ -266,7 +266,7 @@
           display: block;
           text-indent: -400px;
           background: {
-            image: cloudinary-url('background-link.fw.png');
+            image: cloudinary-url("background-link.fw.png");
             repeat: no-repeat;
           }
           p{
@@ -605,7 +605,7 @@
         height: 160px;
         a {
           background: {
-            image: cloudinary-url('background-link.fw.png');
+            image: cloudinary-url("background-link.fw.png");
             repeat: no-repeat;
           }
           p {
@@ -1136,7 +1136,7 @@
         height: 160px;
         a {
           background: {
-            image: cloudinary-url('background-link.fw.png');
+            image: cloudinary-url("background-link.fw.png");
             repeat: no-repeat;
           }
           p {

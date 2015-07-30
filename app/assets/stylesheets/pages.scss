@@ -170,7 +170,7 @@ $primary-font: 'FuturaLight';
       display: block;
       text-indent: -400px;
       background: {
-        image: cloudinary-url('background-link.fw.png');
+        image: cloudinary-url("background-link.fw.png");
         repeat: no-repeat;
       }
       p {
@@ -316,7 +316,7 @@ $primary-font: 'FuturaLight';
   header {
     padding-top: 20px;
     background: {
-      image: cloudinary-url('background-header.fw.png');
+      image: cloudinary_url("background-header.fw.png");
       repeat: no-repeat;
       position: 29px -41px;
     }
@@ -384,58 +384,58 @@ $primary-font: 'FuturaLight';
         cursor: pointer;
         &:first-child {
           background: {
-            image: cloudinary-url('background-arrow.fw.png');
+            image: cloudinary-url("background-arrow.fw.png");
             repeat: no-repeat;
             position: 50% 100%;
           }
         }
         &.photo1 {
-          background-image: cloudinary-url('photomaking-color.png', $effect: "grayscale");
+          background-image: cloudinary-url("photomaking-color.png", $effect: "grayscale");
           background-repeat: no-repeat;
           &:hover {
             background: {
-              image: cloudinary-url('photomaking-color.png');
+              image: cloudinary-url("photomaking-color.png");
               repeat: no-repeat;
             }
           }
         }
         &.photo1-active {
           background: {
-            image: cloudinary-url('photomaking-color.png');
+            image: cloudinary-url("photomaking-color.png");
             repeat: no-repeat;
           }
           border: 5px solid #FFA800;
         }
         &.photo2 {
-          background-image: cloudinary-url('polygraphy-color.png', $effect: "grayscale");
+          background-image: cloudinary-url("polygraphy-color.png", $effect: "grayscale");
           background-repeat: no-repeat;
           &:hover {
             background: {
-              image: cloudinary-url('polygraphy-color.png');
+              image: cloudinary-url("polygraphy-color.png");
               repeat: no-repeat;
             }
           }
         }
         &.photo2-active {
           background: {
-            image: cloudinary-url('polygraphy-color.png');
+            image: cloudinary-url("polygraphy-color.png");
             repeat: no-repeat;
           }
           border: 5px solid #FFA800;
         }
         &.photo3 {
-          background-image: cloudinary-url('photobook-color.png', $effect: "grayscale");
+          background-image: cloudinary-url("photobook-color.png", $effect: "grayscale");
           background-repeat: no-repeat;
           &:hover {
             background: {
-              image: cloudinary-url('photobook-color.png');
+              image: cloudinary-url("photobook-color.png");
               repeat: no-repeat;
             }
           }
         }
         &.photo3-active {
           background: {
-            image: cloudinary-url('photobook-color.png');
+            image: cloudinary-url("photobook-color.png");
             repeat: no-repeat;
           }
           border: 5px solid #FFA800;
@@ -560,7 +560,7 @@ $primary-font: 'FuturaLight';
       box-shadow: 0 -7px 14px -4px #000;
       li {
         background: {
-          image: cloudinary-url('marker.fw.png'), cloudinary-url('grey-marker.fw.png');
+          image: cloudinary-url("marker.fw.png"), cloudinary-url("grey-marker.fw.png");
           repeat: no-repeat, no-repeat;
           position: 0 8px, 100% 12px;
         }
@@ -606,19 +606,19 @@ $primary-font: 'FuturaLight';
           margin: 0 4px 2px 12px;
           a {
            .photo_bike:hover {
-             content: cloudinary_url('color-list-photo-bikes.png');
+             content: cloudinary_url("color-list-photo-bikes.png");
            }
            .photo_single:hover {
-             content: cloudinary_url('color-list-photo-single.png');
+             content: cloudinary_url("color-list-photo-single.png");
            }
            .photo_butterfly:hover {
-             content: cloudinary_url('color-list-photo-butterfly.png');
+             content: cloudinary_url("color-list-photo-butterfly.png");
            }
            .photo_passport:hover {
-             content: cloudinary_url('color-list-photo-passport.png');
+             content: cloudinary_url("color-list-photo-passport.png");
            }
            .photo_cards:hover {
-             content: cloudinary_url('color-list-photo-cards.png');
+             content: cloudinary_url("color-list-photo-cards.png");
            }
           }
         }
