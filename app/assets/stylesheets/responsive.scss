@@ -1,4 +1,184 @@
 /* ------------------------------------------ */
+/* -----------responsive by (320px)---------- */
+/* ------------------------------------------ */
+@media only screen and (min-width: 320px) {
+  .wrapper {
+    header {
+      margin-right: 0;
+      background-position: -260px -41px;
+      .nav-page-list {
+        height: 80px;
+        margin: 10px 0;
+        li {
+          .nav-page{
+            li {
+              width: 52px;
+              padding: 0 15px;
+              a {
+                font-size: 12px;
+              }
+            }
+          }
+          #nav-page2 {
+            li {
+              width: 100px;
+              padding: 0 1px;
+            }
+          }
+          #nav-page3 {
+            li {
+              width: 48px;
+              &:first-child {
+                margin-right: 15px;
+              }
+              &:last-child {
+                width: 57px;
+              }
+            }
+          }
+        }
+      }
+      .nav {
+        margin-bottom: 25px;
+        li {
+          width: 90px;
+          height: 120px;
+          background-size: 100px auto;
+          background-position: 0 0;
+          margin: 2px 4px;
+        }
+      }
+      .information {
+        ul {
+          padding-left: 7px;
+        }
+      }
+    }
+    .content {
+      .subject-matter {
+        padding: 45px 0;
+        p {
+          padding: 0 4px;
+        }
+      }
+      .ui-tabs {
+        .ui-tabs-nav {
+          li {
+            height: 35px;
+            a {
+              font-size: 10px;
+              padding: 10px 0;
+            }
+          }
+        }
+        .ca-container {
+          width: inherit;
+        }
+      }
+      .price {
+        margin-top: 30px;
+        h3 {
+          font-size: 17px;
+        }
+        .price-list {
+          li {
+            h4 {
+              font-size: 17px;
+            }
+            .description {
+              li {
+                font-size: 20px;
+              }
+            }
+          }
+        }
+        .more-information {
+          margin-bottom: 15px;
+          padding-top: 10px;
+          li {
+            font-size: 15px;
+          }
+        }
+      }
+      .conditions {
+        li {
+          padding: 6px 25px;
+        }
+      }
+      .page2 {
+        h2 {
+          font-size: 25px;
+          margin: 20px 0 15px;
+        }
+        .invitation {
+          li {
+            width: 17%;
+            font-size: 11px;
+            img {
+              width: 100%;
+            }
+          }
+        }
+        .big-list-photo {
+          li {
+            width: 28%;
+            height: auto;
+            &:nth-child(4) {
+              width: 46%;
+            }
+            &:last-child {
+              width: 44%;
+              img {
+                height: 100px;
+              }
+            }
+            img {
+              width: 100%;
+              height: auto;
+            }
+          }
+        }
+        .invitation-thems {
+          padding: 23px 24px 72px;
+          font-size: 20px;
+        }
+        .two-big-photo {
+          img {
+            width: 50%;
+            height: 118px;
+          }
+        }
+        .commentary {
+          margin: 18px 0;
+          font-size: 17px;
+        }
+        .table {
+          padding-top: 15px;
+          table {
+            margin: 0 12px;
+            td {
+              &.name {
+                font-size: 15px;
+              }
+              &.quantity {
+                font-size: 23px;
+                line-height: 22px;
+              }
+              &.cost {
+                font-size: 17px;
+              }
+            }
+          }
+          .commentary2 {
+            margin-top: 65px;
+            font-size: 14px;
+          }
+        }
+      }
+    }
+  }
+}
+/* ------------------------------------------ */
 /* -----------responsive by (460px)---------- */
 /* ------------------------------------------ */
 @media only screen and (min-width: 460px) {
