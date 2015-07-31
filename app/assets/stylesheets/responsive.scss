@@ -175,6 +175,150 @@
           }
         }
       }
+      .page3 {
+        .book-list {
+          li {
+            h2 {
+              font-size: 25px;
+              margin: 20px 0 15px;
+            }
+            .photo-gallery-wrapp {
+              img {
+                width: 160px;
+                height: 125px;
+              }
+              ul {
+                margin-top: 0;
+                li {
+                  margin: {
+                    top: 10px;
+                    right: 5px;
+                  }
+                  img {
+                    width: 44px;
+                    height: 30px;
+                  }
+                }
+              }
+            }
+            .info-wrapp {
+              font-size: 12px;
+              dl {
+                padding: 10px;
+              }
+              .special-info {
+                padding-bottom: 10px;
+              }
+              .info-size {}
+            }
+          }
+        }
+      }
+    }
+    .message {
+      bottom: 40px;
+      li {
+        margin: 0 3px;
+        a {
+          p {}
+        }
+        &.big-message {
+          a {
+            height: 85px;
+            background-size: 335px;
+            p {
+              top: 18px;
+              width: 639px;
+            }
+          }
+        }
+        &.small-message {}
+        &.small-text {
+          a {
+            font-size: 21px;
+          }
+        }
+      }
+    }
+    .call-me {
+      height: 90px;
+      margin: 0 auto 50px;
+      .call-text {
+        a {
+          p {
+            font-size: 21px;
+          }
+        }
+      }
+    }
+    .contact-information {
+      padding: 50px 0;
+      form {
+        .label-phone {
+          font-size: 19px;
+        }
+        .input-phone {
+          width: 310px;
+          input[type="text"] {
+            width: 280px;
+          }
+        }
+        input[type="submit"] {
+          margin-bottom: 50px;
+        }
+      }
+      .feedback-info {
+        li {
+          font-size: 22px;
+        }
+      }
+      .social {
+        margin-left: 0;
+        li {
+          a {
+            img {
+              width: 60px;
+            }
+          }
+          .photo-love-ujin {
+            width: 85px;
+            margin: 0 15px;
+          }
+        }
+      }
+    }
+    .question {
+      margin-bottom: 20px;
+      form {
+        overflow: visible;
+        height: 168px;
+        .label-text {
+          font-size: 30px;
+        }
+        .input-text {
+          textarea {
+            height: 75px;
+            width: 265px;
+          }
+        }
+        input[type="submit"] {
+          bottom: -21px;
+          height: 23px;
+          width: 78px;
+        }
+        input[type="text"] {
+          width: 225px;
+          height: 22px;
+          margin-right: 10px;
+          padding-left: 1px;
+        }
+      }
+    }
+    footer {
+      padding: 20px 8px 8px;
+      p {
+        font-size: 17px;
+      }
     }
   }
 }
