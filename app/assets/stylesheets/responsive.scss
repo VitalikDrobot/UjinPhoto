@@ -16,7 +16,7 @@
               display: inline-block;
               padding: 0 10px;
               a {
-                font-size: 14px;
+                font-size: 13px;
               }
             }
           }
@@ -33,7 +33,8 @@
           }
           #nav-page3 {
             li {
-              width: 85px;
+              width: 80px;
+              padding: 0 6px;
               &:last-child {
                 width: 50px;
               }
@@ -279,7 +280,7 @@
       text-align: center;
       li {
         display: inline-block;
-        margin: 0 14px;
+        margin: 0 5px;
         height: 104px;
         a {
           overflow: hidden;
@@ -297,22 +298,22 @@
         &.big-message {
           a {
             background: {
-              size: 378px auto;
+              size: 346px auto;
               position: 0 0;
             }
-            height: 112px;
-            width: 210px;
+            height: 102px;
+            width: 227px;
             .offer {
               margin-top: 4px;
             }
             p {
-              top: 16px;
-              left: 108px;
+              top: 19px;
+              left: 116px;
               width: 396px;
-              font-size: 11px;
+              font-size: 12px;
               span {
                 font-weight: bold;
-                font-size: 18px;
+                font-size: 16px;
               }
             }
           }
@@ -320,11 +321,11 @@
         &.small-message {
           a {
             background: {
-              size: 400px auto;
-              position: -303px 0;
+              size: 346px auto;
+              position: -265px 0;
             }
-            height: 110px;
-            width: 105px;
+            height: 105px;
+            width: 81px;
             p {
               font-size: 25px;
             }
@@ -332,9 +333,14 @@
         }
         &.small-text {
           a {
+            background-size: 310px auto;
+            background-position: 0 0;
+            height: 100px;
+            width: 220px;
             p {
-              font-size: 23px;
-              top: 27px;
+              font-size: 20px;
+              top: 24px;
+              left: 112px;
             }
           }
         }
@@ -483,6 +489,7 @@
             width: 460px;
             li {
               width: 93px;
+              padding: 0 15px;
             }
           }
         }
@@ -695,6 +702,13 @@
             }
             .photo-gallery-wrapp {
               float: none;
+              img {
+                width: 500px;
+                height: 343px;
+              }
+              ul {
+                margin-bottom: 10px;
+              }
             }
             .info-wrapp {
               text-align: left;
@@ -725,7 +739,7 @@
         &.big-message {
           a {
             background: {
-              size: 417px auto;
+              size: 415px auto;
               position: 0 0;
             }
             height: 109px;
@@ -871,6 +885,7 @@
       width:768px;
       background-position: -100px -41px;
       .nav-page-list {
+        height: 100px;
         li {
           .nav-page {
             li {
@@ -935,7 +950,7 @@
           li {
             margin-right: 13px;
             width: 231px;
-            font-size: 16px;
+            font-size: 18px;
           }
         }
       }
@@ -963,6 +978,9 @@
         }
       }
       .price {
+        h3 {
+          font-size: 27px;
+        }
         .price-list {
           li {
             margin: 0 40px 36px;
@@ -1052,8 +1070,14 @@
       .page3 {
         .book-list {
           li {
+            h2 {
+              font-size: 35px;
+            }
             .photo-gallery-wrapp {
               float: left;
+              img {
+                width: 425px;
+              }
             }
           }
         }
@@ -1077,33 +1101,45 @@
           a {
             width: 450px;
             height: 159px;
+            background-size: 600px;
             p {
-              font-size: 15px;
+              font-size: 21px;
+              top: 23px;
+              left: 192px;
+              span {
+                font-size: 31px;
+              }
             }
           }
         }
         &.small-text {
           a {
             p {
-              font-size: 25px;
+              font-size: 40px;
+              top: 33px;
             }
           }
         }
         &.small-message {
           a {
-            background-position: -480px 0;
-            height: 159px;
-            width: 156px;
+            background-position: -421px 0;
+            background-size: 554px auto;
+            height: 155px;
+            width: 165px;
           }
         }
       }
     }
     .call-me {
-      width: 666px;
-      .call-text {
-        p {
-          font-size: 40px;
-          top: 41px;
+      width: inherit;
+      li {
+        &.call-text {
+          a {
+            p {
+              font-size: 38px;
+              top: 41px;
+            }
+          }
         }
       }
     }
@@ -1120,6 +1156,12 @@
         }
         input[type="submit"] {
           width: 449px;
+          font-size: 31px;
+        }
+      }
+      .feedback-info {
+        li {
+          font-size: 35px;
         }
       }
       .social {
@@ -1174,6 +1216,7 @@
       width: 1024px;
       background-position: -3px -41px;
       .nav-page-list {
+        height: 210px;
         li {
           .nav-page {
             li {
@@ -1192,6 +1235,9 @@
             width: 1024px;
             li {
               width: 245px;
+              &:last-child {
+                width: 100px;
+              }
             }
           }
         }
@@ -1266,6 +1312,9 @@
         }
       }
       .price {
+        h3 {
+          font-size: 32px;
+        }
         .price-list {
           li {
             h4 {
@@ -1311,6 +1360,9 @@
           img {
             height: 370px;
           }
+        }
+        .commentary {
+          font-size: 22px;
         }
         .table {
           padding-top: 22px;
@@ -1384,7 +1436,7 @@
     }
     .message {
       li {
-        height: 160px;
+        height: 180px;
         a {
           p {
             font-size: 23px;
@@ -1393,46 +1445,60 @@
         }
         &.big-message {
           a {
-            width: 500px;
-            height: 160px;
+            width: 515px;
+            height: 179px;
+            background-size: 684px auto;
             p {
-              font-size: 18px;
+              font-size: 24px;
               width: 495px;
+              top: 29px;
+              left: 195px;
+              span {
+                font-size: 35px;
+              }
             }
           }
         }
         &.small-text {
           a {
             p {
-              font-size: 33px;
-              top: 31px;
+              font-size: 46px;
+              top: 43px;
             }
           }
         }
         &.small-message {
           a {
             background-position: -480px 0;
-            height: 159px;
-            width: 156px;
+            background-size: 637px auto;
+            height: 180px;
+            width: 170px;
           }
         }
       }
     }
     .call-me {
-      width: 666px;
+      width: inherit;
       li {
         &.call-text {
           a {
+            width: 480px;
+            height: 180px;
+            background-size: 660px auto;
             p {
-              font-size: 27px;
-              top: 30px;
-              left: 100px;
+              font-size: 42px;
+              top: 40px;
+              left: 190px;
             }
           }
         }
       }
     }
     .contact-information {
+      padding: 90px 0;
+      input[type="submit"] {
+        font-size: 33px;
+      }
       .social {
         margin-left:105px;
         li {
@@ -1500,6 +1566,7 @@
     header{
       width:1200px;
       .nav-page-list {
+        height: 220px;
         li {
           .nav-page {
             li {
@@ -1518,6 +1585,9 @@
             width: 1200px;
             li {
               width: 280px;
+              &:last-child {
+                width: 100px;
+              }
             }
           }
         }
@@ -1708,12 +1778,12 @@
             width: 450px;
             height: 159px;
             p {
-              font-size: 20px;
+              font-size: 22px;
               left: 190px;
               top: 35px;
               span {
                 font: {
-                  size: 27px;
+                  size: 33px;
                   weight: bold;
                 }
               }
@@ -1735,8 +1805,8 @@
           a {
             p {
               top: 40px;
-              left: 205px;
-              font-size: 40px;
+              left: 185px;
+              font-size: 42px;
             }
           }
         }
@@ -1744,10 +1814,28 @@
     }
     .call-me {
       width: 666px;
-      .call-text {
-        p {
-          font-size: 40px;
-          top: 41px;
+      li {
+        &.call-text {
+          a {
+            p {
+              font-size: 40px;
+              top: 41px;
+            }
+          }
+        }
+      }
+    }
+    .contact-information {
+      form {
+        .label-phone {
+          font-size: 37px;
+        }
+        .input-phone {
+          width: 660px;
+          input[type="text"] {
+            width: 630px;
+            font-size: 45px;
+          }
         }
       }
     }
