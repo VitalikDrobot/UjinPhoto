@@ -28,15 +28,16 @@
           #nav-page2 {
             li {
               padding: 0 1px;
-              width: 108px;
+              width: 99px;
             }
           }
           #nav-page3 {
+            text-align: inherit;
             li {
               width: 80px;
-              padding: 0 6px;
+              padding: 0 3px 0 2px;
               &:last-child {
-                width: 50px;
+                width: 45px;
               }
             }
           }
@@ -46,8 +47,8 @@
         margin-left:0;
         li {
           margin-right:-4px;
-          width:100px;
-          height:145px;
+          width:89px;
+          height:140px;
           &.photo1 {
             background-size:100px auto;
             &:hover {
@@ -79,11 +80,11 @@
       }
       .information {
         ul {
-          padding-left: 10px;
+          padding-left: 5px;
           li {
             font-size: 12px;
-            margin-right: 9px;
-            width: 100px;
+            margin-right: 10px;
+            width: 90px;
           }
         }
       }
@@ -93,7 +94,6 @@
         p {
           color: #fff;
           font-size: 17px;
-          width: 320px;
           margin: 0 auto;
           text-align: center;
         }
@@ -104,7 +104,7 @@
             height: 40px;
             a {
               font: {
-                size: 10px;
+                size: 9px;
                 family: 'MyriadProRegular';
               }
               padding: 11px 0;
@@ -162,17 +162,22 @@
       .page2 {
         h2 {
           font: {
-            size: 26px;
+            size: 23px;
             weight: normal;
           }
           margin: 25px 0 30px 0;
         }
         .invitation {
+          padding-left: 5px;
           li {
             width:17%;
-            font-size:11px;
+            font-size:10px;
+            padding-right: 9px;
             img {
               width:100%;
+              &[alt="mini"] {
+                padding-left: 0;
+              }
             }
           }
         }
@@ -199,7 +204,7 @@
         .two-big-photo {
           img {
             width:50%;
-            height: 200px;
+            height: 150px;
           }
         }
         .commentary {
@@ -207,7 +212,7 @@
         }
         .table {
           table {
-            margin-left: 20px;
+            margin-left: 7px;
             td {
               padding-bottom: 22px;
               &.name {
@@ -241,7 +246,7 @@
             overflow: hidden;
             h2 {
               font: {
-                size: 26px;
+                size: 22px;
                 weight: normal;
               }
             }
@@ -259,11 +264,11 @@
                 li {
                   margin: {
                     right: 5px;
-                    top: 15px;
-                    left: 10px;
+                    top: 10px;
+                    left: 5px;
                   }
                   img {
-                    width: 97px;
+                    width: 91px;
                     height: 60px;
                   }
                 }
@@ -271,6 +276,7 @@
             }
             .info-wrapp {
               text-align: left;
+              font-size: 14px;
             }
           }
         }
@@ -298,19 +304,19 @@
         &.big-message {
           a {
             background: {
-              size: 346px auto;
+              size: 320px auto;
               position: 0 0;
             }
             height: 102px;
-            width: 227px;
+            width: 200px;
             .offer {
               margin-top: 4px;
             }
             p {
               top: 19px;
-              left: 116px;
+              left: 105px;
               width: 396px;
-              font-size: 12px;
+              font-size: 10px;
               span {
                 font-weight: bold;
                 font-size: 16px;
@@ -321,8 +327,8 @@
         &.small-message {
           a {
             background: {
-              size: 346px auto;
-              position: -265px 0;
+              size: 320px auto;
+              position: -241px 0;
             }
             height: 105px;
             width: 81px;
@@ -336,11 +342,11 @@
             background-size: 310px auto;
             background-position: 0 0;
             height: 100px;
-            width: 220px;
+            width: 200px;
             p {
-              font-size: 20px;
+              font-size: 18px;
               top: 24px;
-              left: 112px;
+              left: 105px;
             }
           }
         }
@@ -362,15 +368,15 @@
       padding: 40px 0;
       form {
         .label-phone {
-          font-size: 19px;
+          font-size: 18px;
         }
         .input-phone {
           border: 3px dashed #000;
           border-radius: 10px;
           margin: 0 auto 10px;
-          width: 320px;
+          width: 290px;
           input[type="text"] {
-            width: 294px;
+            width: 260px;
           }
         }
         input[type="submit"] {
@@ -387,7 +393,7 @@
       }
       .feedback-info {
         li {
-          font-size: 24px;
+          font-size: 23px;
         }
       }
       .social {
@@ -395,10 +401,9 @@
         overflow: hidden;
         margin: {
           left: 0;
-          right: 10px;
         }
         li {
-          margin-right: 25px;
+          margin: 5px;
           img {
             width: 80px;
             &.photo-love-ujin {
@@ -431,7 +436,7 @@
           height: 32px;
           width: 225px;
           margin-right: 0;
-          margin-top: 1px;
+          margin-top: -55px;
           padding-left: 2px;
         }
         input[type="submit"] {
@@ -712,6 +717,7 @@
             }
             .info-wrapp {
               text-align: left;
+              font-size: 18px;
             }
           }
         }
@@ -748,6 +754,7 @@
               top: 23px;
               left: 127px;
               width: 440px;
+              font-size: 15px;
               span {
                 font-weight: bold;
                 font-size: 18px;
@@ -855,6 +862,7 @@
           height: 37px;
           width: 263px;
           margin-right: 11px;
+          margin-top: 5px;
         }
         input[type="submit"] {
           font-size: 21px;
