@@ -7,7 +7,7 @@ class ApplicationController < ActionController::Base
 
   def strip_www
     if request.env["HTTP_HOST"] == "www.ujinphoto.ck.ua"
-      redirect_to "http://ujinphoto.ck.ua/"
+      redirect_to "http://ujinphoto.ck.ua/", status: 301
     end
   end
 end
